@@ -1,47 +1,52 @@
 import { motion, useInView } from 'motion/react';
-import { useRef } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import { Navigation } from '../components/Navigation';
 import { ArrowRight, GraduationCap, Briefcase, Code2, Rocket, Mail, ChevronDown, FileText } from 'lucide-react';
+import { ImageWithFallback } from '../components/figma/ImageWithFallback';
 import { socials } from '../public/linkconfig';
 import { Page } from '../utils/types';
 
 
 export default function LandingPage({ onNavigate }: { onNavigate: (page: Page) => void }) {
+  const [imageMargin, setImageMargin] = useState(0);
+
+  useEffect(() => {
+    const updateMargin = () => {
+      const vhVwDiff = window.innerHeight - window.innerWidth;
+      setImageMargin(vhVwDiff * 0.25);
+    };
+
+    updateMargin();
+    window.addEventListener('resize', updateMargin);
+    return () => window.removeEventListener('resize', updateMargin);
+  }, []);
+
   return (
     <div className="min-h-screen bg-white">
       <Navigation onNavigate={onNavigate} />
       
       {/* Hero Section */}
-      <section className="min-h-screen flex items-center justify-center px-6 relative">
-        <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1 }}
-          className="max-w-4xl mx-auto text-center"
-        >
-          <h1 className="text-6xl md:text-8xl mb-6 text-gray-900">
-            Your Name
-          </h1>
-          <p className="text-xl md:text-2xl text-gray-600 mb-8">
-            Product Thinker. Builder. MBA & Engineer.
-          </p>
-          <div className="w-20 h-1 bg-gray-900 mx-auto"></div>
-        </motion.div>
-        
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.5, duration: 1 }}
-          className="absolute bottom-12 left-1/2 transform -translate-x-1/2"
-        >
-          <ChevronDown className="w-8 h-8 text-gray-400 animate-bounce" />
-        </motion.div>
+      <section className="flex-col min-h-screen">
+        <div className="w-full relative" style={{ overflow: 'hidden', height: '50vh' }}>
+          <ImageWithFallback
+            src="HQ_Portrait.jpg"
+            alt="Minimalist workspace"
+            className="object-fill"
+            style={{ top: `${imageMargin}px`, position: "relative" }}
+          />
+        </div>
+        <div className="w-1/2 flex-col justify-center p-12">
+          <h1 className="text-2xl">Hi</h1>
+          <p className="text-l">My name is Liam and I am an engineer and product developer</p>
+          <h3 className="text-l">See what I've been up to:</h3>
+          <ul>
+            <li>MBA Writing</li>
+            <li>Personal Projects</li>
+            <li>Work Experience</li>
+          </ul>
+          <div>Get in touch</div>
+        </div>
       </section>
-
-      {/* Timeline indicator - vertical line */}
-      <div className="fixed left-8 top-1/2 transform -translate-y-1/2 hidden lg:block z-10">
-        <div className="w-px h-64 bg-gradient-to-b from-gray-900 via-gray-500 to-gray-300"></div>
-      </div>
 
       {/* Looking For Section */}
       <section className="min-h-screen flex items-center justify-center px-6 bg-white relative">
