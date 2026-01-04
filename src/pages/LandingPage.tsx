@@ -38,14 +38,22 @@ export default function LandingPage({ onNavigate }: { onNavigate: (page: Page) =
         <div className="flex flex-row lg:flex-col lg:w-[50vw] justify-center p-12 lg:py-16 font-serif">
           <div>
             <img src="hi.webp" />
-            <p className="text-4xl py-10">My name is Liam and I'm an engineer and product developer</p>
+            <p className="text-4xl py-10">My name is Liam, I'm an engineer and product developer</p>
           </div>
           <div>
             <h4 className="text-2xl">See what I've been up to:</h4>
-            <ul className='text-lg pl-1'>
-              <li><a>MBA Writing</a></li>
-              <li><a>Personal Projects</a></li>
-              <li><a>Work Experience</a></li>
+            <ul className='text-lg pl-4'>
+              {[
+                { title: "MBA Writing", link: "#mba"},
+                { title: "Work Experience", link: "#work"},
+                { title: "Personal Projects", link: "#projects"},
+              ].map((item, index) => (
+                <li key={index} className="mt-1">
+                  <a className="inline-flex items-center gap-1 hover:gap-4 transition-all" href={item.link}>
+                    {item.title} <ArrowRight className="w-4 h-4" />
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
         </div>
@@ -58,13 +66,13 @@ export default function LandingPage({ onNavigate }: { onNavigate: (page: Page) =
       </section> */}
 
       {/* MBA Section - Most Recent */}
-      <section className="min-h-screen flex items-center justify-center px-6 bg-gray-50 relative">
+      <section id="mba" className="min-h-screen flex items-center justify-center px-6 bg-gray-50 relative">
         <MBASection onNavigate={onNavigate} />
         <div className="absolute top-8 right-8 text-gray-400 text-sm">2024-2026</div>
       </section>
 
       {/* Amazon Section */}
-      <section className="min-h-screen flex items-center justify-center px-6 bg-white relative">
+      <section id="work" className="min-h-screen flex items-center justify-center px-6 bg-white relative">
         <AmazonSection onNavigate={onNavigate} />
         <div className="absolute top-8 right-8 text-gray-500 text-sm">2021-2024</div>
       </section>
@@ -235,9 +243,9 @@ function MBASection({ onNavigate }: { onNavigate: (page: Page) => void }) {
 
       <div className="grid md:grid-cols-2 gap-6 mb-8">
         {[
-          { icon: GraduationCap, label: 'Applied AI, Strategic Management, and Entreprenuership', sublabel: 'Concentrations' },
-          { icon: Rocket, label: 'Chair of Booth AI Group, Student Mentor for Booth Tech Group', sublabel: 'Club Affiliations' },
-          // { icon: Briefcase, label: '', sublabel: 'Summer 2023' }
+          { label: 'Applied AI, Strategic Management, and Entreprenuership', sublabel: 'Concentrations' },
+          { label: 'Chair of Booth AI Group, Student Mentor for Booth Tech Group', sublabel: 'Club Affiliations' },
+          // { icon: Briefcase, label: '', sublabel: 'Entreprenuership' }
         ].map((item, index) => (
           <div
             key={index}
