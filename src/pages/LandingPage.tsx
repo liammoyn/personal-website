@@ -26,17 +26,17 @@ export default function LandingPage({ onNavigate }: { onNavigate: (page: Page) =
       <Navigation onNavigate={onNavigate} />
       
       {/* Hero Section */}
-      <section className="flex-col min-h-screen">
-        <div className="w-full relative" style={{ overflow: 'hidden', height: '50vh' }}>
+      <section className="flex flex-col lg:flex-row min-h-screen">
+        <div className="w-full h-[50vh] lg:w-[50vw] lg:h-screen relative overflow-hidden">
           <ImageWithFallback
             src="HQ_Portrait.jpg"
             alt="Minimalist workspace"
-            className="object-fill"
-            style={{ top: `${imageMargin}px`, position: "relative" }}
+            className="object-fill lg:object-cover lg:h-screen relative top-[var(--image-margin)] lg:top-0"
+            style={{ '--image-margin': `${imageMargin}px` } as React.CSSProperties}
           />
         </div>
-        <div className="w-1/2 flex-col justify-center p-12">
-          <h1 className="text-2xl">Hi</h1>
+        <div className="w-[50vw] flex-col justify-center p-12">
+          <h1 className="text-2xl">Hi,</h1>
           <p className="text-l">My name is Liam and I am an engineer and product developer</p>
           <h3 className="text-l">See what I've been up to:</h3>
           <ul>
