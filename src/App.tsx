@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { SchoolDetail } from './pages/SchoolDetail';
 import { WorkDetail } from './pages/WorkDetail';
 import { ProjectsDetail } from './pages/ProjectsDetail';
-import { Page } from './utils/types';
+import { Page } from './components/Navigation';
 import LandingPage from './pages/LandingPage';
 
 export default function App() {

@@ -49,7 +49,7 @@ export function SchoolDetail({ onNavigate }: SchoolDetailProps) {
 
   return (
     <div className="min-h-screen bg-white">
-      <Navigation onNavigate={onNavigate} showBack />
+      <Navigation onNavigate={onNavigate} onPage='school' showBack />
       
       <div className="pt-32 pb-20 px-6">
         <div className="max-w-5xl mx-auto">

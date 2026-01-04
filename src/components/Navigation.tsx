@@ -1,15 +1,16 @@
 import { useState, useEffect } from 'react';
 import { ArrowLeft } from 'lucide-react';
 
-type Page = 'home' | 'school' | 'work' | 'projects';
+export type Page = 'home' | 'school' | 'work' | 'projects';
 
 interface NavigationProps {
   onNavigate: (page: Page) => void;
   showBack?: boolean;
+  onPage: Page
 }
 
-export function Navigation({ onNavigate, showBack = false }: NavigationProps) {
-  const [isVisible, setIsVisible] = useState(false);
+export function Navigation({ onNavigate, onPage, showBack = false }: NavigationProps) {
+  const [isVisible, setIsVisible] = useState(onPage != 'home');
   const [lastScrollY, setLastScrollY] = useState(0);
 
   useEffect(() => {

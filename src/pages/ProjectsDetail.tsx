@@ -83,7 +83,7 @@ export function ProjectsDetail({ onNavigate }: ProjectsDetailProps) {
 
   return (
     <div className="min-h-screen bg-white">
-      <Navigation onNavigate={onNavigate} showBack />
+      <Navigation onNavigate={onNavigate} onPage='projects' showBack />
       
       <div className="pt-32 pb-20 px-6">
         <div className="max-w-6xl mx-auto">

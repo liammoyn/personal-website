@@ -23,7 +23,7 @@ export default function LandingPage({ onNavigate }: { onNavigate: (page: Page) =
 
   return (
     <div className="min-h-screen bg-white">
-      <Navigation onNavigate={onNavigate} />
+      <Navigation onNavigate={onNavigate} onPage='home' />
       
       {/* Hero Section */}
       <section className="flex flex-col lg:flex-row min-h-screen">
@@ -35,16 +35,19 @@ export default function LandingPage({ onNavigate }: { onNavigate: (page: Page) =
             style={{ '--image-margin': `${imageMargin}px` } as React.CSSProperties}
           />
         </div>
-        <div className="w-[50vw] flex-col justify-center p-12">
-          <h1 className="text-2xl">Hi,</h1>
-          <p className="text-l">My name is Liam and I am an engineer and product developer</p>
-          <h3 className="text-l">See what I've been up to:</h3>
-          <ul>
-            <li>MBA Writing</li>
-            <li>Personal Projects</li>
-            <li>Work Experience</li>
-          </ul>
-          <div>Get in touch</div>
+        <div className="flex flex-row lg:flex-col lg:w-[50vw] justify-center p-12 lg:py-16 font-serif">
+          <div>
+            <img src="hi.webp" />
+            <p className="text-4xl py-10">My name is Liam and I'm an engineer and product developer</p>
+          </div>
+          <div>
+            <h4 className="text-2xl">See what I've been up to:</h4>
+            <ul className='text-lg pl-1'>
+              <li><a>MBA Writing</a></li>
+              <li><a>Personal Projects</a></li>
+              <li><a>Work Experience</a></li>
+            </ul>
+          </div>
         </div>
       </section>
 
