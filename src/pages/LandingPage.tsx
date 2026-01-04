@@ -52,28 +52,28 @@ export default function LandingPage({ onNavigate }: { onNavigate: (page: Page) =
       </section>
 
       {/* Looking For Section */}
-      <section className="min-h-screen flex items-center justify-center px-6 bg-white relative">
+      {/* <section className="min-h-screen flex items-center justify-center px-6 bg-white relative">
         <LookingForSection onNavigate={onNavigate} />
         <div className="absolute top-8 right-8 text-gray-300 text-sm">Now</div>
-      </section>
+      </section> */}
 
       {/* MBA Section - Most Recent */}
       <section className="min-h-screen flex items-center justify-center px-6 bg-gray-50 relative">
         <MBASection onNavigate={onNavigate} />
-        <div className="absolute top-8 right-8 text-gray-400 text-sm">2022-2024</div>
+        <div className="absolute top-8 right-8 text-gray-400 text-sm">2024-2026</div>
       </section>
 
       {/* Amazon Section */}
       <section className="min-h-screen flex items-center justify-center px-6 bg-white relative">
         <AmazonSection onNavigate={onNavigate} />
-        <div className="absolute top-8 right-8 text-gray-500 text-sm">2018-2022</div>
+        <div className="absolute top-8 right-8 text-gray-500 text-sm">2021-2024</div>
       </section>
 
       {/* Undergrad Section */}
-      <section className="min-h-screen flex items-center justify-center px-6 bg-gray-50 relative">
+      {/* <section className="min-h-screen flex items-center justify-center px-6 bg-gray-50 relative">
         <UndergradSection onNavigate={onNavigate} />
         <div className="absolute top-8 right-8 text-gray-600 text-sm">2014-2018</div>
-      </section>
+      </section> */}
 
       {/* Footer CTA */}
       <footer className="py-32 px-6 bg-gray-900 text-white">
@@ -220,56 +220,42 @@ function MBASection({ onNavigate }: { onNavigate: (page: Page) => void }) {
 
   return (
     <div ref={ref} className="max-w-5xl mx-auto w-full">
-      <motion.div
-        initial={{ opacity: 0, x: -100 }}
-        animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -100 }}
-        transition={{ duration: 0.8 }}
-      >
-        <div className="inline-block px-4 py-2 bg-gray-900 text-white text-sm tracking-wider mb-6">
-          Chicago Booth MBA
-        </div>
-        <h2 className="text-5xl md:text-7xl text-gray-900 mb-6">
-          Business Strategy & Leadership
-        </h2>
-      </motion.div>
+      <div className="inline-block px-4 py-2 bg-gray-900 text-white text-sm tracking-wider mb-6">
+        Business Strategy & Leadership
+      </div>
+      <h2 className="text-5xl md:text-7xl text-gray-900 mb-6">
+        Chicago Booth MBA
+      </h2>
 
-      <div className="grid md:grid-cols-3 gap-6 mb-8">
+      <div>
+        <p className="text-xl text-gray-600 max-w-2xl mb-8">
+          I joined Booth's MBA program to develop as a holistic product developer. I wanted to develop business acumin that I could blend with my technical ability to solve more complex real-world problems.
+        </p>
+      </div>
+
+      <div className="grid md:grid-cols-2 gap-6 mb-8">
         {[
-          { icon: GraduationCap, label: 'Top Business School', sublabel: 'Class of 2024' },
-          { icon: Rocket, label: 'Product Management', sublabel: 'Focus Area' },
-          { icon: Briefcase, label: 'Consulting Internship', sublabel: 'Summer 2023' }
+          { icon: GraduationCap, label: 'Applied AI, Strategic Management, and Entreprenuership', sublabel: 'Concentrations' },
+          { icon: Rocket, label: 'Chair of Booth AI Group, Student Mentor for Booth Tech Group', sublabel: 'Club Affiliations' },
+          // { icon: Briefcase, label: '', sublabel: 'Summer 2023' }
         ].map((item, index) => (
-          <motion.div
+          <div
             key={index}
-            initial={{ opacity: 0, y: 50, rotate: -5 }}
-            animate={isInView ? { opacity: 1, y: 0, rotate: 0 } : { opacity: 0, y: 50, rotate: -5 }}
-            transition={{ duration: 0.6, delay: 0.2 + index * 0.15 }}
             className="bg-white p-6 rounded-lg border border-gray-900 shadow-sm"
           >
-            <item.icon className="w-8 h-8 text-gray-900 mb-4" />
             <h3 className="text-lg text-gray-900 mb-1">{item.label}</h3>
             <p className="text-sm text-gray-600">{item.sublabel}</p>
-          </motion.div>
+          </div>
         ))}
       </div>
 
-      <motion.div
-        initial={{ opacity: 0, x: -50 }}
-        animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
-        transition={{ duration: 0.8, delay: 0.6 }}
-      >
-        <p className="text-xl text-gray-600 max-w-2xl mb-8">
-          Developed business acumen and strategic thinking skills. Focused on product management, 
-          entrepreneurship, and leveraging technology for business impact.
-        </p>
-        <button
+      <button
           onClick={() => onNavigate('school')}
-          className="group inline-flex items-center gap-2 text-gray-900 hover:gap-4 transition-all"
+          className="group cursor-pointer inline-flex items-center gap-2 text-gray-900 hover:gap-4 transition-all"
         >
-          <span className="text-lg">Learn about my education</span>
+          <span className="text-lg">Read about my takeaways from class</span>
           <ArrowRight className="w-5 h-5" />
         </button>
-      </motion.div>
     </div>
   );
 }
@@ -282,27 +268,20 @@ function AmazonSection({ onNavigate }: { onNavigate: (page: Page) => void }) {
     <div ref={ref} className="max-w-5xl mx-auto w-full">
       <div className="grid md:grid-cols-2 gap-12 items-center">
         <div>
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
-            transition={{ duration: 0.8 }}
-          >
+          <div>
             <div className="inline-block px-4 py-2 bg-gray-800 text-white text-sm tracking-wider mb-6">
-              SOFTWARE DEVELOPER
+              Software & Product Engineering
             </div>
             <h2 className="text-5xl md:text-7xl text-gray-900 mb-6">
-              Amazon Web Services
+              Amazon
             </h2>
             <p className="text-xl text-gray-600 mb-8">
               Built scalable systems and led technical initiatives for AWS services. 
               Worked with distributed systems, cloud infrastructure, and served millions of customers.
             </p>
-          </motion.div>
+          </div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
+          <div
             className="grid grid-cols-3 gap-4 mb-8"
           >
             <div className="text-center">
@@ -317,47 +296,38 @@ function AmazonSection({ onNavigate }: { onNavigate: (page: Page) => void }) {
               <div className="text-4xl text-gray-900 mb-1">10M+</div>
               <div className="text-sm text-gray-600">Users</div>
             </div>
-          </motion.div>
+          </div>
 
-          <motion.button
+          <button
             onClick={() => onNavigate('work')}
-            initial={{ opacity: 0 }}
-            animate={isInView ? { opacity: 1 } : { opacity: 0 }}
-            transition={{ duration: 0.8, delay: 0.5 }}
-            className="group inline-flex items-center gap-2 text-gray-900 hover:gap-4 transition-all"
+            className="group cursor-pointer inline-flex items-center gap-2 text-gray-900 hover:gap-4 transition-all"
           >
-            <span className="text-lg">See my work experience</span>
+            <span className="text-lg">See all of my work experience</span>
             <ArrowRight className="w-5 h-5" />
-          </motion.button>
+          </button>
         </div>
 
-        <motion.div
-          initial={{ opacity: 0, x: 100 }}
-          animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 100 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
+        <div
           className="space-y-4"
         >
           {[
-            { title: 'Senior SDE', desc: 'Led team on infrastructure scaling', year: '2020-2022' },
-            { title: 'SDE II', desc: 'Built distributed caching system', year: '2019-2020' },
-            { title: 'SDE I', desc: 'Developed API services for AWS', year: '2018-2019' }
+            { title: 'Techincal Product Managment Internship', desc: 'Defined product and technical requirements for Amazon Grocery\'s marketing technology assessment strategy', year: '2025-2025', team: 'Amazon Grocery' },
+            { title: 'Software Development Engineer II', desc: 'Led team architecting and building green-field distributed work execution system for CloudWatch Application Signals', year: '2023-2024', team: 'AWS CloudWatch' },
+            { title: 'Software Development Engineer I', desc: 'Designed and developed full-stack features for online A/B testing framework service CloudWatch Evidently', year: '2021-2023', team: 'AWS CloudWatch' },
           ].map((role, index) => (
-            <motion.div
+            <div
               key={index}
-              initial={{ opacity: 0, x: 50 }}
-              animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
-              transition={{ duration: 0.6, delay: 0.4 + index * 0.1 }}
               className="bg-gray-50 p-6 border-l-4 border-gray-800"
             >
-              <div className="flex items-start justify-between mb-2">
+              <div className="flex items-center justify-between mb-2">
                 <h3 className="text-lg text-gray-900">{role.title}</h3>
-                <Briefcase className="w-5 h-5 text-gray-800" />
+                <p className="text-gray-500 text-xs">{role.year}</p>
               </div>
               <p className="text-gray-600 text-sm mb-1">{role.desc}</p>
-              <p className="text-gray-500 text-xs">{role.year}</p>
-            </motion.div>
+              <p className="text-gray-500 text-xs">{role.team}</p>
+            </div>
           ))}
-        </motion.div>
+        </div>
       </div>
     </div>
   );
