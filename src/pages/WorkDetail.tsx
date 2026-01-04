@@ -1,4 +1,4 @@
-import { Navigation } from './Navigation';
+import { Navigation } from '../components/Navigation';
 import { motion } from 'motion/react';
 import { Briefcase, Users, TrendingUp } from 'lucide-react';
 

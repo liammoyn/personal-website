@@ -1,4 +1,4 @@
-import { Navigation } from './Navigation';
+import { Navigation } from '../components/Navigation';
 import { motion } from 'motion/react';
 import { ExternalLink, Github, Code2 } from 'lucide-react';
 
