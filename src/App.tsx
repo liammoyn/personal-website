@@ -6,6 +6,7 @@ import { SchoolDetail } from './components/SchoolDetail';
 import { WorkDetail } from './components/WorkDetail';
 import { ProjectsDetail } from './components/ProjectsDetail';
 import { ArrowRight, GraduationCap, Briefcase, Code2, Rocket, Mail, ChevronDown, FileText } from 'lucide-react';
+import { socials } from './public/linkconfig';
 
 type Page = 'home' | 'school' | 'work' | 'projects';
 
@@ -82,7 +83,7 @@ function LandingPage({ onNavigate }: { onNavigate: (page: Page) => void }) {
             
             <div className="flex flex-wrap gap-4 justify-center mb-16">
               <a
-                href="mailto:your.email@example.com"
+                href={socials.email}
                 className="px-8 py-4 bg-white text-gray-900 rounded-lg hover:bg-gray-100 transition-colors inline-flex items-center gap-2"
               >
                 <Mail className="w-5 h-5" />
@@ -117,10 +118,10 @@ function LandingPage({ onNavigate }: { onNavigate: (page: Page) => void }) {
                 >
                   Projects
                 </button>
-                <a href="#" className="text-gray-300 hover:text-white transition-colors">
+                <a href={socials.linkedIn} className="text-gray-300 hover:text-white transition-colors">
                   LinkedIn
                 </a>
-                <a href="#" className="text-gray-300 hover:text-white transition-colors">
+                <a href={socials.github} className="text-gray-300 hover:text-white transition-colors">
                   GitHub
                 </a>
               </div>
@@ -221,7 +222,7 @@ function MBASection({ onNavigate }: { onNavigate: (page: Page) => void }) {
         transition={{ duration: 0.8 }}
       >
         <div className="inline-block px-4 py-2 bg-gray-900 text-white text-sm tracking-wider mb-6">
-          MBA
+          Chicago Booth MBA
         </div>
         <h2 className="text-5xl md:text-7xl text-gray-900 mb-6">
           Business Strategy & Leadership
@@ -286,7 +287,7 @@ function AmazonSection({ onNavigate }: { onNavigate: (page: Page) => void }) {
               SOFTWARE DEVELOPER
             </div>
             <h2 className="text-5xl md:text-7xl text-gray-900 mb-6">
-              Amazon
+              Amazon Web Services
             </h2>
             <p className="text-xl text-gray-600 mb-8">
               Built scalable systems and led technical initiatives for AWS services. 
@@ -381,7 +382,7 @@ function UndergradSection({ onNavigate }: { onNavigate: (page: Page) => void }) 
           COMPUTER ENGINEERING
         </div>
         <h2 className="text-5xl md:text-7xl text-gray-900 mb-6">
-          Where It All Began
+          Northeastern University
         </h2>
         <p className="text-xl text-gray-600 max-w-2xl mx-auto">
           Built a strong foundation in computer science, mathematics, and engineering principles. 
