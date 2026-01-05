@@ -5,12 +5,11 @@ export type Page = 'home' | 'school' | 'work' | 'projects';
 
 interface NavigationProps {
   onNavigate: (page: Page) => void;
-  showBack?: boolean;
   onPage: Page
 }
 
-export function Navigation({ onNavigate, onPage, showBack = false }: NavigationProps) {
-  const [isVisible, setIsVisible] = useState(onPage != 'home');
+export function Navigation({ onNavigate, onPage }: NavigationProps) {
+  const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
 
   useEffect(() => {
@@ -30,42 +29,43 @@ export function Navigation({ onNavigate, onPage, showBack = false }: NavigationP
     return () => window.removeEventListener('scroll', handleScroll);
   }, [lastScrollY]);
 
+  const defaultLinkStyle = "text-gray-600 hover:text-gray-900 transition-colors cursor-pointer"
+  const thisPageLinkStyle = "text-gray-900 underline cursor-default"
+
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-200 transition-transform duration-300 ${isVisible ? 'translate-y-0' : '-translate-y-full'}`}>
       <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-        {showBack ? (
-          <button
+        {onPage != 'home' ? (
+          <a
             onClick={() => onNavigate('home')}
-            className="flex items-center gap-2 text-gray-900 hover:text-gray-600 transition-colors"
+            className="flex items-center gap-2 text-gray-900 hover:text-gray-600 transition-colors cursor-pointer"
           >
             <ArrowLeft className="w-5 h-5" />
-            <span>Back</span>
-          </button>
+            <span>Home</span>
+          </a>
         ) : (
-          <button onClick={() => onNavigate('home')} className="text-gray-900 tracking-wider">
-            YOUR NAME
-          </button>
+          <div/>
         )}
         
         <div className="flex gap-8">
-          <button
+          <a
             onClick={() => onNavigate('school')}
-            className="text-gray-600 hover:text-gray-900 transition-colors"
+            className={onPage == 'school' ? thisPageLinkStyle : defaultLinkStyle}
           >
             Education
-          </button>
-          <button
+          </a>
+          <a
             onClick={() => onNavigate('work')}
-            className="text-gray-600 hover:text-gray-900 transition-colors"
+            className={onPage == 'work' ? thisPageLinkStyle : defaultLinkStyle}
           >
             Experience
-          </button>
-          <button
+          </a>
+          <a
             onClick={() => onNavigate('projects')}
-            className="text-gray-600 hover:text-gray-900 transition-colors"
+            className={onPage == 'projects' ? thisPageLinkStyle : defaultLinkStyle}
           >
             Projects
-          </button>
+          </a>
         </div>
       </div>
     </nav>
