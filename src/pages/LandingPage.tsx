@@ -107,22 +107,6 @@ function HeroSection({ imageMargin }: { imageMargin: number }) {
   )
 }
 
-function FadeInSection({ children, delay = 0 }: { children: React.ReactNode; delay?: number }) {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: false, margin: "-20%" });
-
-  return (
-    <motion.div
-      ref={ref}
-      initial={{ opacity: 0, y: 50 }}
-      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
-      transition={{ duration: 0.8, delay }}
-    >
-      {children}
-    </motion.div>
-  );
-}
-
 function LookingForSection({ onNavigate }: { onNavigate: (page: Page) => void }) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: false, margin: "-20%" });
@@ -449,9 +433,19 @@ function UndergradSection({ onNavigate }: { onNavigate: (page: Page) => void }) 
 }
 
 function FooterSection({ onNavigate }: { onNavigate: (page: Page) => void }) {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: false, margin: "-20%" });
+
   return (
-    <FadeInSection delay={0}>
-        <div className="max-w-4xl mx-auto text-center">
+    <div>
+      <div className="max-w-4xl mx-auto text-center">
+        <motion.div
+          ref={ref}
+          initial={{ opacity: 0, y: 50 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+          transition={{ duration: 0.8 }}
+        >
+
           <h2 className="text-5xl md:text-6xl mb-8">Let's Build Something</h2>
           <p className="text-xl text-gray-400 mb-12 max-w-2xl mx-auto">
             I'm looking for opportunities to join innovative teams and create products that matter.
@@ -473,39 +467,39 @@ function FooterSection({ onNavigate }: { onNavigate: (page: Page) => void }) {
               Download Resume
             </a>
           </div>
+        </motion.div>
 
-          <div className="border-t border-gray-800 pt-12">
-            <p className="text-gray-500 mb-6">Explore More</p>
-            <div className="flex flex-wrap gap-6 justify-center">
-              <button
-                onClick={() => onNavigate('school')}
-                className="text-gray-300 hover:text-white transition-colors"
-              >
-                Education
-              </button>
-              <button
-                onClick={() => onNavigate('work')}
-                className="text-gray-300 hover:text-white transition-colors"
-              >
-                Experience
-              </button>
-              <button
-                onClick={() => onNavigate('projects')}
-                className="text-gray-300 hover:text-white transition-colors"
-              >
-                Projects
-              </button>
-              <a href={socials.linkedIn} className="text-gray-300 hover:text-white transition-colors">
-                LinkedIn
-              </a>
-              <a href={socials.github} className="text-gray-300 hover:text-white transition-colors">
-                GitHub
-              </a>
-            </div>
+        <div className="border-t border-gray-800 pt-12">
+          <p className="text-gray-500 mb-6">Explore More</p>
+          <div className="flex flex-wrap gap-6 justify-center">
+            <button
+              onClick={() => onNavigate('school')}
+              className="text-gray-300 hover:text-white transition-colors"
+            >
+              Education
+            </button>
+            <button
+              onClick={() => onNavigate('work')}
+              className="text-gray-300 hover:text-white transition-colors"
+            >
+              Experience
+            </button>
+            <button
+              onClick={() => onNavigate('projects')}
+              className="text-gray-300 hover:text-white transition-colors"
+            >
+              Projects
+            </button>
+            <a href={socials.linkedIn} className="text-gray-300 hover:text-white transition-colors">
+              LinkedIn
+            </a>
+            <a href={socials.github} className="text-gray-300 hover:text-white transition-colors">
+              GitHub
+            </a>
           </div>
         </div>
-      </FadeInSection>
+      </div>
+    </div>
   )
 }
 
-  
