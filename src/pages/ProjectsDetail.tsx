@@ -11,80 +11,144 @@ interface ProjectsDetailProps {
 export function ProjectsDetail({ onNavigate }: ProjectsDetailProps) {
   const projects = [
     {
-      title: 'AI Content Generator',
-      category: 'Machine Learning',
-      description: 'A tool that uses GPT models to generate high-quality content for blogs, social media, and marketing materials. Built with a focus on customization and brand voice consistency.',
-      tech: ['Python', 'FastAPI', 'React', 'OpenAI API', 'PostgreSQL'],
-      links: {
-        demo: '#',
-        github: '#'
-      },
-      featured: true
+      title: 'HexEmpire',
+      category: 'AI Enabled Python Game',
+      description: 'A custom strategy board game between 4 players with objective-based tunable computer players written in PyGame with custom graphics.',
+      tech: ['Python', 'FSM AI', 'PyGame'],
+      links: [
+        {
+          href: 'https://github.com/liammoyn/hexempire',
+          name: 'GitHub',
+        }
+      ],
+      featured: true,
+      type: 'CS_PROJECT',
     },
     {
-      title: 'Real-time Collaboration Tool',
-      category: 'Web Application',
-      description: 'A collaborative whiteboard application with real-time sync, allowing teams to brainstorm and design together. Features include drawing tools, sticky notes, and video chat integration.',
-      tech: ['TypeScript', 'WebRTC', 'Socket.io', 'Canvas API', 'Node.js'],
-      links: {
-        demo: '#',
-        github: '#'
-      },
-      featured: true
+      title: 'Minesweeper Bot',
+      category: 'JavaScript Game Solver',
+      description: 'A Minesweeper implementation with a visualized solving algorithm using constraint-satisfaction to deal optimally with uncertainty.',
+      tech: ['TypeScript', 'React', 'CSP Solver'],
+      links: [
+        {
+          href: 'https://github.com/liammoyn/minesweeperbot',
+          name: 'GitHub',
+        }
+      ],
+      featured: true,
+      type: 'CS_PROJECT',
     },
     {
-      title: 'Personal Finance Tracker',
-      category: 'Mobile App',
-      description: 'A mobile app for tracking expenses, setting budgets, and visualizing spending patterns. Includes automated categorization and financial insights.',
-      tech: ['React Native', 'Firebase', 'Redux', 'Chart.js'],
-      links: {
-        demo: '#',
-        github: '#'
-      },
-      featured: false
+      title: 'Article Generator',
+      category: 'Rails RAG App',
+      description: 'A Ruby on Rails web app for generating articles with custom sources utilizing Chat GPT\'s API.',
+      tech: ['Ruby', 'Rails', 'OpenAI API'],
+      links: [
+        {
+          href: 'https://github.com/liammoyn/article-generator',
+          name: 'GitHub',
+        }
+      ],
+      featured: true,
+      type: 'CS_PROJECT',
     },
     {
-      title: 'Open Source UI Library',
-      category: 'Development Tool',
-      description: 'A collection of accessible, customizable React components with a focus on developer experience. Includes comprehensive documentation and examples.',
-      tech: ['React', 'TypeScript', 'Storybook', 'CSS-in-JS'],
-      links: {
-        demo: '#',
-        github: '#'
-      },
-      featured: false
+      title: 'This Website',
+      category: 'React & Tailwind CSS App',
+      description: 'A TypeScript React progressive web app with Tailwind CSS and Lucid React components.',
+      tech: ['TypeScript', 'React', 'Tailwind CSS'],
+      links: [
+        {
+          href: 'https://github.com/liammoyn/personal-website',
+          name: 'GitHub',
+        }
+      ],
+      featured: true,
+      type: 'CS_PROJECT',
     },
     {
-      title: 'Weather Dashboard',
-      category: 'Data Visualization',
-      description: 'An interactive weather dashboard that displays current conditions, forecasts, and historical trends. Features beautiful visualizations and location-based alerts.',
-      tech: ['Vue.js', 'D3.js', 'Weather API', 'Tailwind CSS'],
-      links: {
-        demo: '#',
-        github: '#'
-      },
-      featured: false
+      title: 'LeetCode Scaffold',
+      category: 'Python Coding Scaffold',
+      description: 'A vanilla Python framework for completing and testing LeetCode style questions in a local environment.',
+      tech: ['Python', 'Algorithms', 'PyTest'],
+      links: [
+        {
+          href: 'https://github.com/liammoyn/leetcode-scaffold',
+          name: 'GitHub',
+        },
+        {
+          href: 'https://leetcode.com/u/liammoyn/',
+          name: 'My LeetCode',
+        }
+      ],
+      featured: true,
+      type: 'CS_PROJECT',
     },
     {
-      title: 'Task Automation Bot',
-      category: 'Automation',
-      description: 'A Discord bot that automates repetitive tasks, manages schedules, and integrates with various productivity tools. Used by 500+ servers.',
-      tech: ['Python', 'Discord.py', 'MongoDB', 'Docker'],
-      links: {
-        demo: '#',
-        github: '#'
-      },
-      featured: false
-    }
+      title: 'SmartPedal',
+      category: 'React Native Mobile App',
+      description: 'A React Native mobile app for controlling an embedded microcontroller for custom guitar pedals.',
+      tech: ['JavaScript', 'React Native', 'Embedded Systems'],
+      links: [
+        {
+          href: 'https://github.com/liammoyn/SmartPedal',
+          name: 'GitHub',
+        }
+      ],
+      featured: true,
+      type: 'CS_PROJECT',
+    },
+    {
+      title: 'TrustVector',
+      category: 'Startup Consulting',
+      description: 'Worked with pre-seed startup TrustVector to conduct user interviews and help define their product strategy.',
+      tech: ['User Interviews', 'Product Strategy'],
+      links: [
+        {
+          href: 'https://www.trustvector.ai/',
+          name: 'Website',
+        }
+      ],
+      featured: false,
+      type: 'PERSONAL_PROJECT',
+    },
+    {
+      title: 'Code4Community',
+      category: 'Software Undergraduate Club',
+      description: 'Founded and ran an undergraduate club developing full-stack software for non-profits in Boston.',
+      tech: ['Full-Stack Development', 'Team Management'],
+      links: [
+        {
+          href: 'https://www.c4cneu.com/',
+          name: 'Website',
+        }
+      ],
+      featured: false,
+      type: 'PERSONAL_PROJECT',
+    },
+    {
+      title: 'Microsoft TEALS',
+      category: 'Teaching and Mentorship',
+      description: 'Co-Taught a high school computer science class at O\'Dea High School in Seattle through the Microsoft TEALS program.',
+      tech: ['Lecturing', 'Python', 'Scratch'],
+      links: [
+        {
+          href: 'https://www.microsoft.com/en-us/teals',
+          name: 'Website',
+        }
+      ],
+      featured: false,
+      type: 'PERSONAL_PROJECT',
+    },
   ];
 
-  const featuredProjects = projects.filter(p => p.featured);
-  const otherProjects = projects.filter(p => !p.featured);
+  const csProjects = projects.filter(p => p.type == "CS_PROJECT");
+  const personalProjects = projects.filter(p => p.type == "PERSONAL_PROJECT");
 
   return (
     <div className="min-h-screen bg-white">
       <Navigation onNavigate={onNavigate} onPage='projects' />
-      
+
       <div className="pt-32 pb-20 px-6">
         <div className="max-w-6xl mx-auto">
           {/* Header */}
@@ -101,19 +165,19 @@ export function ProjectsDetail({ onNavigate }: ProjectsDetailProps) {
               Things I've Built
             </h1>
             <p className="text-xl text-gray-600 max-w-3xl">
-              A selection of side projects, experiments, and open-source contributions. 
-              Each project represents learning, exploration, and a passion for creating.
+              A selection of side projects, experiments, and personal initatives. Each project took learning, passion,
+              and grit to get it to the finish line.
             </p>
           </motion.div>
 
-          {/* Featured Projects */}
+          {/* CS Projects */}
           <div className="mb-20">
             <h2 className="text-2xl text-gray-900 mb-8 flex items-center gap-2">
               <Code2 className="w-6 h-6" />
-              Featured Projects
+              CS Personal Projects
             </h2>
             <div className="grid md:grid-cols-2 gap-8">
-              {featuredProjects.map((project, index) => (
+              {csProjects.map((project, index) => (
                 <motion.div
                   key={index}
                   initial={{ opacity: 0, y: 30 }}
@@ -128,7 +192,7 @@ export function ProjectsDetail({ onNavigate }: ProjectsDetailProps) {
                   </div>
                   <h3 className="text-2xl text-gray-900 mb-4">{project.title}</h3>
                   <p className="text-gray-600 mb-6">{project.description}</p>
-                  
+
                   <div className="flex flex-wrap gap-2 mb-6">
                     {project.tech.map((tech, i) => (
                       <span
@@ -139,22 +203,17 @@ export function ProjectsDetail({ onNavigate }: ProjectsDetailProps) {
                       </span>
                     ))}
                   </div>
-                  
+
                   <div className="flex gap-4">
-                    <a
-                      href={project.links.demo}
-                      className="flex items-center gap-2 text-gray-900 hover:text-gray-600 transition-colors"
-                    >
-                      <ExternalLink className="w-4 h-4" />
-                      <span>Live Demo</span>
-                    </a>
-                    <a
-                      href={project.links.github}
-                      className="flex items-center gap-2 text-gray-900 hover:text-gray-600 transition-colors"
-                    >
-                      <Github className="w-4 h-4" />
-                      <span>Source Code</span>
-                    </a>
+                    {project.links.map((link, i) => (
+                      <a
+                        href={link.href}
+                        className="flex items-center gap-2 text-gray-900 hover:text-gray-600 transition-colors"
+                      >
+                        <ExternalLink className="w-4 h-4" />
+                        <span>{link.name}</span>
+                      </a>
+                    ))}
                   </div>
                 </motion.div>
               ))}
@@ -165,7 +224,7 @@ export function ProjectsDetail({ onNavigate }: ProjectsDetailProps) {
           <div>
             <h2 className="text-2xl text-gray-900 mb-8">More Projects</h2>
             <div className="grid md:grid-cols-2 gap-6">
-              {otherProjects.map((project, index) => (
+              {personalProjects.map((project, index) => (
                 <motion.div
                   key={index}
                   initial={{ opacity: 0, y: 30 }}
@@ -180,7 +239,7 @@ export function ProjectsDetail({ onNavigate }: ProjectsDetailProps) {
                   </div>
                   <h3 className="text-xl text-gray-900 mb-3">{project.title}</h3>
                   <p className="text-gray-600 text-sm mb-4">{project.description}</p>
-                  
+
                   <div className="flex flex-wrap gap-2 mb-4">
                     {project.tech.slice(0, 3).map((tech, i) => (
                       <span
@@ -196,22 +255,17 @@ export function ProjectsDetail({ onNavigate }: ProjectsDetailProps) {
                       </span>
                     )}
                   </div>
-                  
+
                   <div className="flex gap-4 text-sm">
-                    <a
-                      href={project.links.demo}
-                      className="flex items-center gap-1 text-gray-700 hover:text-gray-900 transition-colors"
-                    >
-                      <ExternalLink className="w-3 h-3" />
-                      <span>Demo</span>
-                    </a>
-                    <a
-                      href={project.links.github}
-                      className="flex items-center gap-1 text-gray-700 hover:text-gray-900 transition-colors"
-                    >
-                      <Github className="w-3 h-3" />
-                      <span>Code</span>
-                    </a>
+                    {project.links.map((link, i) => (
+                      <a
+                        href={link.href}
+                        className="flex items-center gap-2 text-gray-900 hover:text-gray-600 transition-colors"
+                      >
+                        <ExternalLink className="w-4 h-4" />
+                        <span>{link.name}</span>
+                      </a>
+                    ))}
                   </div>
                 </motion.div>
               ))}
