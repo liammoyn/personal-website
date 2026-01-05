@@ -1,7 +1,8 @@
 import { motion, useInView } from 'motion/react';
 import { useRef, useState, useEffect } from 'react';
 import { Navigation } from '../components/Navigation';
-import { ArrowRight, GraduationCap, Briefcase, Code2, Rocket, Mail, ChevronDown, FileText } from 'lucide-react';
+import { ArrowRight, GraduationCap, Briefcase, Code2, Rocket, Mail, ChevronDown, FileText, ExternalLink, Github } from 'lucide-react';
+import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext } from '../components/ui/carousel';
 import { ImageWithFallback } from '../components/figma/ImageWithFallback';
 import { socials } from '../public/linkconfig';
 import { Page } from '../utils/types';
@@ -24,39 +25,10 @@ export default function LandingPage({ onNavigate }: { onNavigate: (page: Page) =
   return (
     <div className="min-h-screen bg-white">
       <Navigation onNavigate={onNavigate} onPage='home' />
-      
+
       {/* Hero Section */}
-      <section className="flex flex-col lg:flex-row min-h-screen">
-        <div className="w-full h-[50vh] lg:w-[50vw] lg:h-screen relative overflow-hidden">
-          <ImageWithFallback
-            src="HQ_Portrait.jpg"
-            alt="Minimalist workspace"
-            className="object-fill lg:object-cover lg:h-screen relative top-[var(--image-margin)] lg:top-0"
-            style={{ '--image-margin': `${imageMargin}px` } as React.CSSProperties}
-          />
-        </div>
-        <div className="flex flex-row lg:flex-col lg:w-[50vw] justify-center p-12 lg:py-16 font-serif">
-          <div>
-            <img src="hi.webp" />
-            <p className="text-4xl py-10">My name is Liam, I'm an engineer and product developer</p>
-          </div>
-          <div>
-            <h4 className="text-2xl">See what I've been up to:</h4>
-            <ul className='text-lg pl-4'>
-              {[
-                { title: "MBA Writing", link: "#mba"},
-                { title: "Work Experience", link: "#work"},
-                { title: "Personal Projects", link: "#projects"},
-              ].map((item, index) => (
-                <li key={index} className="mt-1">
-                  <a className="inline-flex items-center gap-1 hover:gap-4 transition-all" href={item.link}>
-                    {item.title} <ArrowRight className="w-4 h-4" />
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
+      <section className="flex flex-col lg:flex-row min-h-screen bg-linear-to-b from-white to-gray-50">
+        <HeroSection imageMargin={imageMargin} />
       </section>
 
       {/* Looking For Section */}
@@ -66,15 +38,21 @@ export default function LandingPage({ onNavigate }: { onNavigate: (page: Page) =
       </section> */}
 
       {/* MBA Section - Most Recent */}
-      <section id="mba" className="min-h-screen flex items-center justify-center px-6 bg-gray-50 relative">
+      <section id="mba" className="min-h-screen flex items-center justify-center px-6 bg-linear-to-b from-gray-100 to-gray-50 relative">
         <MBASection onNavigate={onNavigate} />
         <div className="absolute top-8 right-8 text-gray-400 text-sm">2024-2026</div>
       </section>
 
       {/* Amazon Section */}
-      <section id="work" className="min-h-screen flex items-center justify-center px-6 bg-white relative">
+      <section id="work" className="min-h-screen flex items-center justify-center px-6 bg-linear-to-b from-white to-gray-50 relative">
         <AmazonSection onNavigate={onNavigate} />
         <div className="absolute top-8 right-8 text-gray-500 text-sm">2021-2024</div>
+      </section>
+
+      {/* Projects Section */}
+      <section id="projects" className="min-h-screen flex items-center justify-center px-6 bg-linear-to-b from-gray-100 to-gray-50 relative">
+        <ProjectsSection onNavigate={onNavigate} />
+        <div className="absolute top-8 right-8 text-gray-500 text-sm">2020-2026</div>
       </section>
 
       {/* Undergrad Section */}
@@ -85,64 +63,48 @@ export default function LandingPage({ onNavigate }: { onNavigate: (page: Page) =
 
       {/* Footer CTA */}
       <footer className="py-32 px-6 bg-gray-900 text-white">
-        <FadeInSection delay={0}>
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-5xl md:text-6xl mb-8">Let's Build Something</h2>
-            <p className="text-xl text-gray-400 mb-12 max-w-2xl mx-auto">
-              I'm looking for opportunities to join innovative teams and create products that matter. 
-              Let's connect.
-            </p>
-            
-            <div className="flex flex-wrap gap-4 justify-center mb-16">
-              <a
-                href={socials.email}
-                className="px-8 py-4 bg-white text-gray-900 rounded-lg hover:bg-gray-100 transition-colors inline-flex items-center gap-2"
-              >
-                <Mail className="w-5 h-5" />
-                Get in Touch
-              </a>
-              <a
-                href="#"
-                className="px-8 py-4 border border-white text-white rounded-lg hover:bg-white hover:text-gray-900 transition-colors"
-              >
-                Download Resume
-              </a>
-            </div>
-
-            <div className="border-t border-gray-800 pt-12">
-              <p className="text-gray-500 mb-6">Explore More</p>
-              <div className="flex flex-wrap gap-6 justify-center">
-                <button
-                  onClick={() => onNavigate('school')}
-                  className="text-gray-300 hover:text-white transition-colors"
-                >
-                  Education
-                </button>
-                <button
-                  onClick={() => onNavigate('work')}
-                  className="text-gray-300 hover:text-white transition-colors"
-                >
-                  Experience
-                </button>
-                <button
-                  onClick={() => onNavigate('projects')}
-                  className="text-gray-300 hover:text-white transition-colors"
-                >
-                  Projects
-                </button>
-                <a href={socials.linkedIn} className="text-gray-300 hover:text-white transition-colors">
-                  LinkedIn
-                </a>
-                <a href={socials.github} className="text-gray-300 hover:text-white transition-colors">
-                  GitHub
-                </a>
-              </div>
-            </div>
-          </div>
-        </FadeInSection>
+        <FooterSection onNavigate={onNavigate} />
       </footer>
     </div>
   );
+}
+
+function HeroSection({ imageMargin }: { imageMargin: number }) {
+  return (
+    <>
+      <div className="w-full h-[50vh] lg:w-[50vw] lg:h-screen relative overflow-hidden">
+        <ImageWithFallback
+          src="HQ_Portrait.jpg"
+          alt="Minimalist workspace"
+          className="object-fill lg:object-cover lg:h-screen relative top-[var(--image-margin)] lg:top-0"
+          style={{ '--image-margin': `${imageMargin}px` } as React.CSSProperties}
+        />
+      </div>
+      <div className="flex flex-row lg:flex-col lg:w-[50vw] justify-center p-12 lg:py-16 font-serif">
+        <div>
+          <img src="hi.webp" />
+          <p className="text-4xl py-10">My name is Liam, I'm an engineer and product developer</p>
+        </div>
+        {/* TODO: Make this a card */}
+        <div>
+          <h4 className="text-2xl">See what I've been up to:</h4>
+          <ul className='text-lg pl-4'>
+            {[
+              { title: "MBA Writing", link: "#mba" },
+              { title: "Work Experience", link: "#work" },
+              { title: "Personal Projects", link: "#projects" },
+            ].map((item, index) => (
+              <li key={index} className="mt-1">
+                <a className="inline-flex items-center gap-1 hover:gap-4 transition-all" href={item.link}>
+                  {item.title} <ArrowRight className="w-4 h-4" />
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </>
+  )
 }
 
 function FadeInSection({ children, delay = 0 }: { children: React.ReactNode; delay?: number }) {
@@ -179,7 +141,7 @@ function LookingForSection({ onNavigate }: { onNavigate: (page: Page) => void })
           Product Development at a Startup
         </h2>
         <p className="text-xl text-gray-600 max-w-2xl mx-auto mb-12">
-          I'm seeking to join an early-stage startup where I can leverage my technical background 
+          I'm seeking to join an early-stage startup where I can leverage my technical background
           and business training to build products that solve real problems.
         </p>
       </motion.div>
@@ -258,12 +220,12 @@ function MBASection({ onNavigate }: { onNavigate: (page: Page) => void }) {
       </div>
 
       <button
-          onClick={() => onNavigate('school')}
-          className="group cursor-pointer inline-flex items-center gap-2 text-gray-900 hover:gap-4 transition-all"
-        >
-          <span className="text-lg">Read about my takeaways from class</span>
-          <ArrowRight className="w-5 h-5" />
-        </button>
+        onClick={() => onNavigate('school')}
+        className="group cursor-pointer inline-flex items-center gap-2 text-gray-900 hover:gap-4 transition-all"
+      >
+        <span className="text-lg">Read about my takeaways from class</span>
+        <ArrowRight className="w-5 h-5" />
+      </button>
     </div>
   );
 }
@@ -284,7 +246,7 @@ function AmazonSection({ onNavigate }: { onNavigate: (page: Page) => void }) {
               Amazon
             </h2>
             <p className="text-xl text-gray-600 mb-8">
-              Built scalable systems and led technical initiatives for AWS services. 
+              Built scalable systems and led technical initiatives for AWS services.
               Worked with distributed systems, cloud infrastructure, and served millions of customers.
             </p>
           </div>
@@ -341,6 +303,82 @@ function AmazonSection({ onNavigate }: { onNavigate: (page: Page) => void }) {
   );
 }
 
+function ProjectsSection({ onNavigate }: { onNavigate: (page: Page) => void }) {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: false, margin: "-20%" });
+
+  return (
+    <div ref={ref} className="max-w-5xl mx-auto w-full">
+      <div className="inline-block px-4 py-2 bg-gray-900 text-white text-sm tracking-wider mb-6">
+        Engineering and Business Development
+      </div>
+      <h2 className="text-5xl md:text-7xl text-gray-900 mb-6">
+        Featured Projects
+      </h2>
+
+      <Carousel className="w-full mb-8" opts={{ loop: true, dragFree: true }}>
+        <CarouselContent>
+          {[
+            { category: "Teaching", title: "Microsoft TEALS Teacher", description: "Co-taught a highschool computer science class", tech: [], links: { demo: "", github: "" } },
+            { category: "Coding", title: "Coding Project", description: "Co-taught a highschool computer science class", tech: [], links: { demo: "", github: "" } },
+            { category: "Learning", title: "Research Project", description: "Co-taught a highschool computer science class", tech: [], links: { demo: "", github: "" } },
+          ].map((project, index) => (
+            <CarouselItem key={index} className="md:basis-1/2">
+              <div className="border border-gray-200 rounded-lg p-8 hover:border-gray-900 transition-colors group h-full">
+                <div className="mb-4">
+                  <span className="text-sm text-gray-500 uppercase tracking-wider">
+                    {project.category}
+                  </span>
+                </div>
+                <h3 className="text-2xl text-gray-900 mb-4">{project.title}</h3>
+                <p className="text-gray-600 mb-6">{project.description}</p>
+
+                <div className="flex flex-wrap gap-2 mb-6">
+                  {project.tech.map((tech, i) => (
+                    <span
+                      key={i}
+                      className="px-3 py-1 bg-gray-100 text-gray-700 text-sm rounded"
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+
+                <div className="flex gap-4">
+                  <a
+                    href={project.links.demo}
+                    className="flex items-center gap-2 text-gray-900 hover:text-gray-600 transition-colors"
+                  >
+                    <ExternalLink className="w-4 h-4" />
+                    <span>Live Demo</span>
+                  </a>
+                  <a
+                    href={project.links.github}
+                    className="flex items-center gap-2 text-gray-900 hover:text-gray-600 transition-colors"
+                  >
+                    <Github className="w-4 h-4" />
+                    <span>Source Code</span>
+                  </a>
+                </div>
+              </div>
+            </CarouselItem>
+          ))}
+        </CarouselContent>
+        <CarouselPrevious />
+        <CarouselNext />
+      </Carousel>
+
+      <button
+        onClick={() => onNavigate('school')}
+        className="group cursor-pointer inline-flex items-center gap-2 text-gray-900 hover:gap-4 transition-all"
+      >
+        <span className="text-lg">See my entire portfolio</span>
+        <ArrowRight className="w-5 h-5" />
+      </button>
+    </div>
+  )
+}
+
 function UndergradSection({ onNavigate }: { onNavigate: (page: Page) => void }) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: false, margin: "-20%" });
@@ -367,7 +405,7 @@ function UndergradSection({ onNavigate }: { onNavigate: (page: Page) => void }) 
           Northeastern University
         </h2>
         <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-          Built a strong foundation in computer science, mathematics, and engineering principles. 
+          Built a strong foundation in computer science, mathematics, and engineering principles.
           Discovered my passion for building technology that solves real problems.
         </p>
       </motion.div>
@@ -409,3 +447,65 @@ function UndergradSection({ onNavigate }: { onNavigate: (page: Page) => void }) 
     </div>
   );
 }
+
+function FooterSection({ onNavigate }: { onNavigate: (page: Page) => void }) {
+  return (
+    <FadeInSection delay={0}>
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 className="text-5xl md:text-6xl mb-8">Let's Build Something</h2>
+          <p className="text-xl text-gray-400 mb-12 max-w-2xl mx-auto">
+            I'm looking for opportunities to join innovative teams and create products that matter.
+            Let's connect.
+          </p>
+
+          <div className="flex flex-wrap gap-4 justify-center mb-16">
+            <a
+              href={socials.email}
+              className="px-8 py-4 bg-white text-gray-900 rounded-lg hover:bg-gray-100 transition-colors inline-flex items-center gap-2"
+            >
+              <Mail className="w-5 h-5" />
+              Get in Touch
+            </a>
+            <a
+              href="#"
+              className="px-8 py-4 border border-white text-white rounded-lg hover:bg-white hover:text-gray-900 transition-colors"
+            >
+              Download Resume
+            </a>
+          </div>
+
+          <div className="border-t border-gray-800 pt-12">
+            <p className="text-gray-500 mb-6">Explore More</p>
+            <div className="flex flex-wrap gap-6 justify-center">
+              <button
+                onClick={() => onNavigate('school')}
+                className="text-gray-300 hover:text-white transition-colors"
+              >
+                Education
+              </button>
+              <button
+                onClick={() => onNavigate('work')}
+                className="text-gray-300 hover:text-white transition-colors"
+              >
+                Experience
+              </button>
+              <button
+                onClick={() => onNavigate('projects')}
+                className="text-gray-300 hover:text-white transition-colors"
+              >
+                Projects
+              </button>
+              <a href={socials.linkedIn} className="text-gray-300 hover:text-white transition-colors">
+                LinkedIn
+              </a>
+              <a href={socials.github} className="text-gray-300 hover:text-white transition-colors">
+                GitHub
+              </a>
+            </div>
+          </div>
+        </div>
+      </FadeInSection>
+  )
+}
+
+  
