@@ -6,6 +6,8 @@ import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext
 import { ImageWithFallback } from '../components/figma/ImageWithFallback';
 import { socials } from '../public/linkconfig';
 import { Page } from '../components/Navigation';
+import { projectData } from './ProjectsDetail';
+import ProjectCard from '../components/ProjectCard';
 
 
 export default function LandingPage({ onNavigate }: { onNavigate: (page: Page) => void }) {
@@ -291,6 +293,8 @@ function ProjectsSection({ onNavigate }: { onNavigate: (page: Page) => void }) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: false, margin: "-20%" });
 
+  const featuredProjects = projectData.filter(p => p.featured)
+
   return (
     <div ref={ref} className="max-w-5xl mx-auto w-full">
       <div className="inline-block px-4 py-2 bg-gray-900 text-white text-sm tracking-wider mb-6">
@@ -302,49 +306,9 @@ function ProjectsSection({ onNavigate }: { onNavigate: (page: Page) => void }) {
 
       <Carousel className="w-full mb-8" opts={{ loop: true, dragFree: true }}>
         <CarouselContent>
-          {[
-            { category: "Teaching", title: "Microsoft TEALS Teacher", description: "Co-taught a highschool computer science class", tech: [], links: { demo: "", github: "" } },
-            { category: "Coding", title: "Coding Project", description: "Co-taught a highschool computer science class", tech: [], links: { demo: "", github: "" } },
-            { category: "Learning", title: "Research Project", description: "Co-taught a highschool computer science class", tech: [], links: { demo: "", github: "" } },
-          ].map((project, index) => (
+          {featuredProjects.map((project, index) => (
             <CarouselItem key={index} className="md:basis-1/2">
-              <div className="border border-gray-200 rounded-lg p-8 hover:border-gray-900 transition-colors group h-full">
-                <div className="mb-4">
-                  <span className="text-sm text-gray-500 uppercase tracking-wider">
-                    {project.category}
-                  </span>
-                </div>
-                <h3 className="text-2xl text-gray-900 mb-4">{project.title}</h3>
-                <p className="text-gray-600 mb-6">{project.description}</p>
-
-                <div className="flex flex-wrap gap-2 mb-6">
-                  {project.tech.map((tech, i) => (
-                    <span
-                      key={i}
-                      className="px-3 py-1 bg-gray-100 text-gray-700 text-sm rounded"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-
-                <div className="flex gap-4">
-                  <a
-                    href={project.links.demo}
-                    className="flex items-center gap-2 text-gray-900 hover:text-gray-600 transition-colors"
-                  >
-                    <ExternalLink className="w-4 h-4" />
-                    <span>Live Demo</span>
-                  </a>
-                  <a
-                    href={project.links.github}
-                    className="flex items-center gap-2 text-gray-900 hover:text-gray-600 transition-colors"
-                  >
-                    <Github className="w-4 h-4" />
-                    <span>Source Code</span>
-                  </a>
-                </div>
-              </div>
+              <ProjectCard project={project} index={index} />
             </CarouselItem>
           ))}
         </CarouselContent>
