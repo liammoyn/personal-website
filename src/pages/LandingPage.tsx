@@ -78,7 +78,7 @@ function HeroSection({ imageMargin }: { imageMargin: number }) {
         <ImageWithFallback
           src="HQ_Portrait.jpg"
           alt="Minimalist workspace"
-          className="object-fill lg:object-cover lg:h-screen relative top-[var(--image-margin)] lg:top-0"
+          className="object-fill lg:object-cover lg:h-screen relative top-(--image-margin) lg:top-0"
           style={{ '--image-margin': `${imageMargin}px` } as React.CSSProperties}
         />
       </div>
