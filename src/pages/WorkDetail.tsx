@@ -11,47 +11,61 @@ interface WorkDetailProps {
 export function WorkDetail({ onNavigate }: WorkDetailProps) {
   const experiences = [
     {
-      title: 'Senior Software Engineer',
-      company: 'Tech Company Inc.',
-      location: 'San Francisco, CA',
-      period: '2022 - Present',
-      description: 'Leading development of core platform features serving millions of users.',
+      title: 'Technical Product Manager MBA Intern',
+      company: 'Amazon Grocery',
+      location: 'Austin, TX',
+      period: '2025 - 2025',
       highlights: [
-        'Led team of 5 engineers to rebuild authentication system, improving security and reducing login times by 40%',
-        'Architected microservices infrastructure handling 10M+ daily requests',
-        'Mentored junior developers and established code review best practices',
-        'Reduced deployment time from 2 hours to 15 minutes through CI/CD optimization'
+        'Defined product and technical requirements while assessing third-party marketing technologies for Amazon Grocery, synthesizing cross-functional needs into a VP-backed recommendation impacting $200M+ in annual marketing spend',
+        'Prioritized and triaged 200+ accessibility issues on wholefoods.com, coordinating engineering workstreams and implementing automated checks to prevent regression, avoiding $150K+ in potential ADA litigation and improving site accessibility',
       ],
-      skills: ['React', 'Node.js', 'AWS', 'PostgreSQL', 'Docker', 'Kubernetes']
+      skills: ['Product Strategy', 'WCAG Accessibility', 'Cross-Team Alignment', 'Marketing Technology', 'B2B SaaS Procurement']
     },
     {
-      title: 'Software Engineer',
-      company: 'Startup Ventures',
-      location: 'New York, NY',
-      period: '2020 - 2022',
-      description: 'Built full-stack features for a fast-growing SaaS platform.',
+      title: 'Software Development Engineer II',
+      company: 'Amazon Web Services',
+      location: 'Seattle, WA',
+      period: '2023 - 2024',
       highlights: [
-        'Developed customer-facing dashboard used by 5000+ active users',
-        'Implemented real-time collaboration features using WebSockets',
-        'Optimized database queries resulting in 60% faster page load times',
-        'Collaborated with design team to improve user experience'
+        'Led design and development of a distributed, asynchronous work execution system powering CloudWatch Application Signals, a full-stack observability platform, enabling 1M+ concurrent fault-tolerant work items at scale',
+        'Owned the development of a shared frontend API across 3 development teams, identifying workflow pain points, creating development standards, and enforcing mechanisms to reduce integration friction and deliver efficient, robust software',
+        'Projected customer usage patterns and analyzed software costs to design an intuitive pricing model with senior leadership for CloudWatch Application Signals, establishing a cost-following revenue structure compatible with multiple growth projections',
+        'Provided technical mentorship through AWS\'s intern and onboarding programs, supporting 10 interns and 2 early-career engineers 1:1, being recognized as a key mentor in full-time hiring and promotion recommendations'
       ],
-      skills: ['Vue.js', 'Python', 'Django', 'Redis', 'MongoDB']
+      skills: ['Distributed Systems', 'System Design', 'Kotlin', 'AWS', 'Software Architecture', 'Mentorship']
     },
     {
-      title: 'Junior Developer',
-      company: 'Digital Agency',
-      location: 'Remote',
-      period: '2019 - 2020',
-      description: 'Contributed to web applications for various clients.',
+      title: 'Software Development Engineer I',
+      company: 'Amazon Web Services',
+      location: 'Seattle, WA',
+      period: '2022 - 2023',
       highlights: [
-        'Built responsive websites for 10+ clients across different industries',
-        'Integrated third-party APIs and payment gateways',
-        'Maintained and updated legacy codebases',
-        'Participated in agile development processes'
+        'Launched, iterated, and maintained CloudWatch Evidently, a cloud-based A/B testing service, across multiple programming languages, technology stacks, and cross-service teams, scaling product to 10k monthly active users',
+        'Conducted user research through weekly stakeholder syncs and 10+ customer interview, synthesizing insights into feature proposals and advocating for customer needs in roadmap discussions',
+        'Designed and implemented features such as a free trial metering solution, an in-browser interactive client with complex data visualizations, and a high-throughput, fault tolerant, client-side evaluation agent, prioritizing for reliability and performance',
       ],
-      skills: ['JavaScript', 'HTML/CSS', 'PHP', 'WordPress', 'Git']
-    }
+      skills: ['Full-Stack Web Development', 'Java', 'A/B Testing', 'User Research', 'React', 'AWS', 'Data Visualization']
+    },
+    {
+      title: 'Software Development Co-op',
+      company: 'Harvard Catalyst at Harvard Medical School',
+      location: 'Cambridge, MA',
+      period: '2020 - 2020',
+      highlights: [
+        'Developed end-to-end features in an agile software development lifecycle in conjunction with product managers for a new user interface of SHRINE, a tool to help researchers locate patient cohorts at national scale for clinical trial recruitment',
+      ],
+      skills: ['Frontend Development', 'React', 'Scala', 'Agile', 'Healthcare Tech']
+    },
+    {
+      title: 'Software Development Co-op',
+      company: 'MineralTree',
+      location: 'Cambrdige, MA',
+      period: '2019 - 2019',
+      highlights: [
+        'Designed and implemented 3 micro-services to help transition MineralTree, an AP automation software, from a monolithic tech stack to a modern and more performant architecture, reducing operating costs by 30%',
+      ],
+      skills: ['Microservices', 'Java', 'GraphQL', 'Architecture Transitions', 'Cost Optimization']
+    },
   ];
 
   return (
@@ -120,13 +134,10 @@ export function WorkDetail({ onNavigate }: WorkDetailProps) {
                   </div>
                   <span className="text-gray-500 whitespace-nowrap">{exp.period}</span>
                 </div>
-                
-                <p className="text-gray-600 mb-6">{exp.description}</p>
-                
                 <div className="space-y-3 mb-6">
                   {exp.highlights.map((highlight, i) => (
                     <div key={i} className="flex items-start gap-3">
-                      <div className="w-1.5 h-1.5 rounded-full bg-gray-900 mt-2 flex-shrink-0"></div>
+                      <div className="w-1.5 h-1.5 rounded-full bg-gray-900 mt-2 shrink-0"></div>
                       <span className="text-gray-700">{highlight}</span>
                     </div>
                   ))}
