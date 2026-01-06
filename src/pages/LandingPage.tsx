@@ -5,7 +5,7 @@ import { ArrowRight, GraduationCap, Briefcase, Code2, Rocket, Mail, ChevronDown,
 import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext } from '../components/ui/carousel';
 import { ImageWithFallback } from '../components/figma/ImageWithFallback';
 import { socials } from '../public/linkconfig';
-import { Page } from '../utils/types';
+import { Page } from '../components/Navigation';
 
 
 export default function LandingPage({ onNavigate }: { onNavigate: (page: Page) => void }) {
@@ -44,13 +44,13 @@ export default function LandingPage({ onNavigate }: { onNavigate: (page: Page) =
       </section>
 
       {/* Amazon Section */}
-      <section id="work" className="min-h-screen flex items-center justify-center px-6 bg-linear-to-b from-white to-gray-50 relative">
+      <section id="aws" className="min-h-screen flex items-center justify-center px-6 bg-linear-to-b from-white to-gray-50 relative">
         <AmazonSection onNavigate={onNavigate} />
         <div className="absolute top-8 right-8 text-gray-500 text-sm">2021-2024</div>
       </section>
 
       {/* Projects Section */}
-      <section id="projects" className="min-h-screen flex items-center justify-center px-6 bg-linear-to-b from-gray-100 to-gray-50 relative">
+      <section id="proj" className="min-h-screen flex items-center justify-center px-6 bg-linear-to-b from-gray-100 to-gray-50 relative">
         <ProjectsSection onNavigate={onNavigate} />
         <div className="absolute top-8 right-8 text-gray-500 text-sm">2020-2026</div>
       </section>
@@ -91,8 +91,8 @@ function HeroSection({ imageMargin }: { imageMargin: number }) {
           <ul className='text-lg pl-4'>
             {[
               { title: "MBA Writing", link: "#mba" },
-              { title: "Work Experience", link: "#work" },
-              { title: "Personal Projects", link: "#projects" },
+              { title: "Work Experience", link: "#aws" },
+              { title: "Personal Projects", link: "#proj" },
             ].map((item, index) => (
               <li key={index} className="mt-1">
                 <a className="inline-flex items-center gap-1 hover:gap-4 transition-all" href={item.link}>
