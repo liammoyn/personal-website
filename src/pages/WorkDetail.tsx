@@ -24,7 +24,6 @@ const educationCard = (edu: Education) => {
               <h3 className="text-2xl text-gray-900 mb-2">{edu.degree}</h3>
               <p className="text-lg text-gray-600">{edu.school}</p>
             </div>
-            <span className="text-gray-500">{edu.period}</span>
           </div>
           <p className="text-gray-600 mb-6">{edu.description}</p>
           <div className="space-y-2">
@@ -54,7 +53,6 @@ const workCard = (exp: Experience, index: number, isSubCard: boolean) => {
           <h3 className="text-2xl text-gray-900 mb-1">{exp.title}</h3>
           <p className="text-lg text-gray-600">{exp.company} • {exp.location}</p>
         </div>
-        <span className="text-gray-500 whitespace-nowrap">{exp.period}</span>
       </div>
       <div className="space-y-3 mb-6">
         {exp.highlights.map((highlight, i) => (
@@ -120,7 +118,7 @@ export function WorkDetail({ onNavigate }: WorkDetailProps) {
           </motion.div>
 
           {/* Stats */}
-          <motion.div
+          {/* <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
@@ -141,25 +139,75 @@ export function WorkDetail({ onNavigate }: WorkDetailProps) {
               <div className="text-4xl text-gray-900 mb-2">20+</div>
               <div className="text-gray-600">Projects Shipped</div>
             </div>
-          </motion.div>
+          </motion.div> */}
 
           {/* Experience Timeline */}
-          <div className="space-y-12">
-            <div className='border-l-2 border-gray-900'>
-              {educationCard(section1.education)}
-              <div className='space-y-8'>
-                {section1.jobs.map((exp, index) => workCard(exp, index, true))}
+          <div className="relative">
+            {/* Dotted vertical line on right */}
+            <div className="absolute right-0 top-0 bottom-0 w-px border-r-2 border-dotted border-gray-300" />
+
+            <div className="space-y-12 pr-16">
+              {/* Section 1: MBA */}
+              <div className='border-l-2 border-gray-900'>
+                <div className="relative">
+                  <div className="absolute right-0 top-0 translate-x-full pl-4 text-sm text-gray-500 whitespace-nowrap">
+                    {section1.education.period.split(' - ')[1]}
+                  </div>
+                  {educationCard(section1.education)}
+                </div>
+                <div className='space-y-8'>
+                  {section1.jobs.map((exp, index) => (
+                    <div key={index} className="relative">
+                      {exp.period && (
+                        <div className="absolute right-0 top-0 translate-x-full pl-4 text-sm text-gray-500 whitespace-nowrap">
+                          {exp.period.split(' - ')[1] || exp.period}
+                        </div>
+                      )}
+                      {workCard(exp, index, true)}
+                    </div>
+                  ))}
+                </div>
               </div>
-            </div>
-            <div className=''>
-              <div className='space-y-8'>
-                {section2.jobs.map((exp, index) => workCard(exp, index, false))}
+
+              {/* Section 2: Standalone jobs */}
+              <div className=''>
+                <div className='space-y-8'>
+                  {section2.jobs.map((exp, index) => (
+                    <div key={index} className="relative">
+                      <div className="absolute right-0 top-0 translate-x-full pl-4 text-sm text-gray-500 whitespace-nowrap">
+                        {exp.period.split(' - ')[1]}
+                      </div>
+                      {workCard(exp, index, false)}
+                    </div>
+                  ))}
+                </div>
               </div>
-            </div>
-            <div className='border-l-2 border-gray-900'>
-              {educationCard(section3.education)}
-              <div className='space-y-4'>
-                {section3.jobs.map((exp, index) => workCard(exp, index, true))}
+
+              {/* Section 3: Undergrad */}
+              <div className='border-l-2 border-gray-900'>
+                <div className="relative">
+                  <div className="absolute right-0 top-0 translate-x-full pl-4 text-sm text-gray-500 whitespace-nowrap">
+                    {section3.education.period.split(' - ')[1]}
+                  </div>
+                  {educationCard(section3.education)}
+                </div>
+                <div className='space-y-4'>
+                  {section3.jobs.map((exp, index) => (
+                    <div key={index} className="relative">
+                      {exp.period && (
+                        <div className="absolute right-0 top-0 translate-x-full pl-4 text-sm text-gray-500 whitespace-nowrap">
+                          {exp.period.split(' - ')[1] || exp.period}
+                        </div>
+                      )}
+                      {workCard(exp, index, true)}
+                    </div>
+                  ))}
+                </div>
+                <div className="relative h-0">
+                  <div className="absolute right-0 top-0 translate-x-full pl-4 text-sm text-gray-500 whitespace-nowrap">
+                    {section3.education.period.split(' - ')[0]}
+                  </div>
+                </div>
               </div>
             </div>
           </div>
