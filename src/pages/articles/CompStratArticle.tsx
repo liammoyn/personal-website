@@ -26,7 +26,7 @@ function ProgressIndicator({ progress, isActive, dotCount }: ProgressIndicatorPr
             {Array.from({ length: dotCount }).map((_, i) => (
                 <span
                     key={i}
-                    className={`text-xs transition-colors ${
+                    className={`text-xs cursor-default transition-colors ${
                         i < highlightedDots
                             ? 'text-gray-900'
                             : 'text-gray-300'
@@ -43,22 +43,17 @@ interface TableOfContentsProps {
     activeSection: string;
     sectionProgress: Record<string, number>;
     sectionDots: Record<string, number>;
-    tocTop: number;
 }
 
-function TableOfContents({ activeSection, sectionProgress, sectionDots, tocTop }: TableOfContentsProps) {
+function TableOfContents({ activeSection, sectionProgress, sectionDots }: TableOfContentsProps) {
     return (
-        <div
-            className="fixed left-[calc((100vw-48rem)/4)] -translate-x-1/2 z-40 hidden lg:block group"
-            style={{ top: `${tocTop}px` }}
-        >
-            <nav className="py-2 px-4">
+        <nav className="sticky top-[10vh] py-2 px-4">
                 <div className="space-y-1">
                     {sections.map((section) => (
                         <div key={section.id}>
                             <a
                                 href={`#${section.id}`}
-                                className={`block text-sm transition-colors ${
+                                className={`block text-sm no-underline transition-colors ${
                                     activeSection === section.id
                                         ? 'text-gray-900 font-medium'
                                         : 'text-gray-400 hover:text-gray-600'
@@ -75,7 +70,6 @@ function TableOfContents({ activeSection, sectionProgress, sectionDots, tocTop }
                     ))}
                 </div>
             </nav>
-        </div>
     );
 }
 
@@ -89,7 +83,6 @@ export default function CompStratArticle({ onNavigate }: CompStratArticleProps) 
     const [activeSection, setActiveSection] = useState(sections[0].id);
     const [sectionProgress, setSectionProgress] = useState<Record<string, number>>({});
     const [sectionDots, setSectionDots] = useState<Record<string, number>>({});
-    const [tocTop, setTocTop] = useState(0);
 
     useEffect(() => {
         const calculateSectionLengths = () => {
@@ -164,25 +157,6 @@ export default function CompStratArticle({ onNavigate }: CompStratArticleProps) 
 
             setSectionProgress(progress);
             setActiveSection(currentActive);
-
-            // Calculate TOC position constrained within article-body bounds
-            const articleBody = document.querySelector('.article-body');
-            if (articleBody) {
-                const bodyTop = (articleBody as HTMLElement).offsetTop;
-                const bodyBottom = bodyTop + (articleBody as HTMLElement).offsetHeight;
-                const tocHeight = 200; // approximate TOC height
-                const scrollY = window.scrollY;
-
-                // Calculate viewport-relative position, clamped to article bounds
-                const viewportTop = Math.max(
-                    bodyTop - scrollY,  // Don't go above article-body
-                    Math.min(
-                        window.innerHeight * 0.25,  // Ideal: 25% from top
-                        bodyBottom - scrollY - tocHeight  // Don't go below article-body
-                    )
-                );
-                setTocTop(viewportTop);
-            }
         };
 
         // Calculate section lengths on mount and resize
@@ -200,11 +174,19 @@ export default function CompStratArticle({ onNavigate }: CompStratArticleProps) 
     return (
         <div className="min-h-screen bg-white">
             <Navigation onNavigate={onNavigate} onPage='competitive-strategy' />
-            <TableOfContents activeSection={activeSection} sectionProgress={sectionProgress} sectionDots={sectionDots} tocTop={tocTop} />
 
             <div className="pt-32 pb-20 px-6">
-                <div className="max-w-3xl mx-auto prose prose-gray lg:prose-lg">
-                    <h1>Competitive Strategy</h1>
+                <div className="max-w-3xl mx-auto">
+
+                    <div className="prose prose-gray lg:prose-lg">
+                        <h1>Competitive Strategy</h1>
+                    </div>
+                </div>
+                <div className="relative prose prose-gray lg:prose-lg max-w-3xl mx-auto">
+                    {/* TOC centered in left margin */}
+                    <div className="absolute top-0 h-full hidden lg:block left-[calc((100vw-48rem)/-4)] -translate-x-1/2">
+                        <TableOfContents activeSection={activeSection} sectionProgress={sectionProgress} sectionDots={sectionDots} />
+                    </div>
                     <div className="article-body">
                         <h2 id="about">About the Class</h2>
                         <p>Taught by Thomas Wollman, the course used applied microeconomics to analyze the decisions managers face in business environments. It focused on deciphering the economics of industrial organization to justify strategic decisions that drive profits.</p>
@@ -256,8 +238,8 @@ export default function CompStratArticle({ onNavigate }: CompStratArticleProps) 
                         <p>In conclusion, the foundational model market is still up for grabs. While the entire industry is unlikely to tip towards a single competitor, there’s still potential for increased consolidation and profits for the winners. The race is ongoing, but I predict the victors will be those who understand they’re playing a positioning game, not a race to a tipping point.</p>
                         <p>The lesson from platform economics is that market structure is predictable, but only if you look at the right factors. Through disciplined market evaluation, you can make smarter, long-term strategy decisions.</p>
                     </div>
-                    <hr></hr>
                 </div>
+                <hr />
             </div>
 
             <footer className="py-32 px-6 bg-gray-900 text-white">
