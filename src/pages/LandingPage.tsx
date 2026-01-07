@@ -206,7 +206,7 @@ function MBASection({ onNavigate }: { onNavigate: (page: Page) => void }) {
       </div>
 
       <button
-        onClick={() => onNavigate('school')}
+        onClick={() => onNavigate('writing')}
         className="group cursor-pointer inline-flex items-center gap-2 text-gray-900 hover:gap-4 transition-all"
       >
         <span className="text-lg">Read about my takeaways from class</span>
@@ -317,7 +317,7 @@ function ProjectsSection({ onNavigate }: { onNavigate: (page: Page) => void }) {
       </Carousel>
 
       <button
-        onClick={() => onNavigate('school')}
+        onClick={() => onNavigate('projects')}
         className="group cursor-pointer inline-flex items-center gap-2 text-gray-900 hover:gap-4 transition-all"
       >
         <span className="text-lg">Browse my entire portfolio</span>
@@ -325,75 +325,6 @@ function ProjectsSection({ onNavigate }: { onNavigate: (page: Page) => void }) {
       </button>
     </div>
   )
-}
-
-function UndergradSection({ onNavigate }: { onNavigate: (page: Page) => void }) {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: false, margin: "-20%" });
-
-  const projects = [
-    { title: 'Senior Design Project', tech: 'Embedded Systems' },
-    { title: 'Research Assistant', tech: 'Computer Vision' },
-    { title: 'Hackathon Winner', tech: 'Mobile App' },
-    { title: 'Teaching Assistant', tech: 'Data Structures' }
-  ];
-
-  return (
-    <div ref={ref} className="max-w-5xl mx-auto w-full">
-      <motion.div
-        initial={{ opacity: 0, y: -50 }}
-        animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: -50 }}
-        transition={{ duration: 0.8 }}
-        className="text-center mb-12"
-      >
-        <div className="inline-block px-4 py-2 bg-gray-700 text-white text-sm tracking-wider mb-6">
-          COMPUTER ENGINEERING
-        </div>
-        <h2 className="text-5xl md:text-7xl text-gray-900 mb-6">
-          Northeastern University
-        </h2>
-        <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-          Built a strong foundation in computer science, mathematics, and engineering principles.
-          Discovered my passion for building technology that solves real problems.
-        </p>
-      </motion.div>
-
-      <div className="grid md:grid-cols-2 gap-6 mb-8">
-        {projects.map((project, index) => (
-          <motion.div
-            key={index}
-            initial={{ opacity: 0, scale: 0.8, rotate: index % 2 === 0 ? -10 : 10 }}
-            animate={isInView ? { opacity: 1, scale: 1, rotate: 0 } : { opacity: 0, scale: 0.8, rotate: index % 2 === 0 ? -10 : 10 }}
-            transition={{ duration: 0.6, delay: 0.2 + index * 0.1 }}
-            className="bg-white p-8 rounded-lg border border-gray-700 hover:border-gray-900 transition-all hover:shadow-lg"
-          >
-            <div className="flex items-start justify-between mb-4">
-              <div className="p-3 bg-gray-50 rounded-lg">
-                <Code2 className="w-6 h-6 text-gray-900" />
-              </div>
-              <span className="text-xs text-gray-500 uppercase tracking-wider">{project.tech}</span>
-            </div>
-            <h3 className="text-xl text-gray-900">{project.title}</h3>
-          </motion.div>
-        ))}
-      </div>
-
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-        transition={{ duration: 0.8, delay: 0.6 }}
-        className="text-center"
-      >
-        <button
-          onClick={() => onNavigate('school')}
-          className="group inline-flex items-center gap-2 text-gray-900 hover:gap-4 transition-all"
-        >
-          <span className="text-lg">Explore my education journey</span>
-          <ArrowRight className="w-5 h-5" />
-        </button>
-      </motion.div>
-    </div>
-  );
 }
 
 function FooterSection({ onNavigate }: { onNavigate: (page: Page) => void }) {
@@ -428,6 +359,7 @@ function FooterSection({ onNavigate }: { onNavigate: (page: Page) => void }) {
               href="#"
               className="px-8 py-4 border border-white text-white rounded-lg hover:bg-white hover:text-gray-900 transition-colors"
             >
+              {/* TODO: Add resume download link */}
               Download Resume
             </a>
           </div>
@@ -436,28 +368,28 @@ function FooterSection({ onNavigate }: { onNavigate: (page: Page) => void }) {
         <div className="border-t border-gray-800 pt-12">
           <p className="text-gray-500 mb-6">Explore More</p>
           <div className="flex flex-wrap gap-6 justify-center">
-            <button
-              onClick={() => onNavigate('school')}
-              className="text-gray-300 hover:text-white transition-colors"
+            <a
+              onClick={() => onNavigate('writing')}
+              className="text-gray-300 hover:text-white transition-colors cursor-pointer"
             >
               Education
-            </button>
-            <button
+            </a>
+            <a
               onClick={() => onNavigate('work')}
-              className="text-gray-300 hover:text-white transition-colors"
+              className="text-gray-300 hover:text-white transition-colors cursor-pointer"
             >
               Experience
-            </button>
-            <button
+            </a>
+            <a
               onClick={() => onNavigate('projects')}
-              className="text-gray-300 hover:text-white transition-colors"
+              className="text-gray-300 hover:text-white transition-colors cursor-pointer"
             >
               Projects
-            </button>
-            <a href={socials.linkedIn} className="text-gray-300 hover:text-white transition-colors">
+            </a>
+            <a href={socials.linkedIn} className="text-gray-300 hover:text-white transition-colors cursor-pointer">
               LinkedIn
             </a>
-            <a href={socials.github} className="text-gray-300 hover:text-white transition-colors">
+            <a href={socials.github} className="text-gray-300 hover:text-white transition-colors cursor-pointer">
               GitHub
             </a>
           </div>

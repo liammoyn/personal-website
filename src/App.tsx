@@ -28,12 +28,14 @@ export default function App() {
     const path = getPathFromPage(page);
     window.history.pushState({ page }, '', path);
     setCurrentPage(page);
+    window.scrollTo(0, 0);
   };
 
   useEffect(() => {
     const handlePopState = (event: PopStateEvent) => {
       const page = event.state?.page || getPageFromPath(window.location.pathname);
       setCurrentPage(page);
+      window.scrollTo(0, 0);
     };
 
     window.addEventListener('popstate', handlePopState);
