@@ -1,114 +1,20 @@
-import { useState, useEffect } from "react";
 import Footer from "../../components/Footer";
 import { Navigation, Page } from "../../components/Navigation";
-import TableOfContents, { sections } from "../../components/TableOfContents";
+import TableOfContents from "../../components/TableOfContents";
+import { useTableOfContents } from "../../hooks/useTableOfContents";
+
+const sections = [
+    { id: 'about', title: 'About the Class' },
+    { id: 'learned', title: 'What I Learned' },
+    { id: 'deep-dive', title: 'Deep Dive' },
+];
 
 interface CompStratArticleProps {
     onNavigate: (page: Page) => void;
 }
 
-const TOTAL_DOTS = 16;
-
 export default function CompStratArticle({ onNavigate }: CompStratArticleProps) {
-    const [activeSection, setActiveSection] = useState(sections[0].id);
-    const [sectionProgress, setSectionProgress] = useState<Record<string, number>>({});
-    const [sectionDots, setSectionDots] = useState<Record<string, number>>({});
-    const [showToc, setShowToc] = useState(false);
-
-    useEffect(() => {
-        const calculateSectionLengths = () => {
-            const lengths: Record<string, number> = {};
-            let totalLength = 0;
-
-            sections.forEach((section, index) => {
-                const element = document.getElementById(section.id);
-                const nextElement = index < sections.length - 1
-                    ? document.getElementById(sections[index + 1].id)
-                    : document.querySelector('footer');
-
-                if (element) {
-                    const sectionTop = element.offsetTop;
-                    const sectionEnd = nextElement
-                        ? (nextElement as HTMLElement).offsetTop
-                        : document.documentElement.scrollHeight;
-                    lengths[section.id] = sectionEnd - sectionTop;
-                    totalLength += lengths[section.id];
-                }
-            });
-
-            // Distribute dots proportionally, ensuring at least 1 dot per section
-            const dots: Record<string, number> = {};
-            let assignedDots = 0;
-
-            sections.forEach((section) => {
-                const proportion = lengths[section.id] / totalLength;
-                const dotCount = Math.max(1, Math.round(proportion * TOTAL_DOTS));
-                dots[section.id] = dotCount;
-                assignedDots += dotCount;
-            });
-
-            // Adjust to ensure exactly TOTAL_DOTS (add/remove from largest section)
-            const diff = TOTAL_DOTS - assignedDots;
-            if (diff !== 0) {
-                const largestSection = sections.reduce((max, s) =>
-                    (lengths[s.id] > lengths[max.id] ? s : max), sections[0]);
-                dots[largestSection.id] = Math.max(1, dots[largestSection.id] + diff);
-            }
-
-            setSectionDots(dots);
-        };
-
-        const handleScroll = () => {
-            const progress: Record<string, number> = {};
-            let currentActive = sections[0].id;
-
-            sections.forEach((section, index) => {
-                const element = document.getElementById(section.id);
-                const nextElement = index < sections.length - 1
-                    ? document.getElementById(sections[index + 1].id)
-                    : document.querySelector('footer');
-
-                if (element) {
-                    const sectionTop = element.offsetTop;
-                    const sectionEnd = nextElement
-                        ? (nextElement as HTMLElement).offsetTop
-                        : document.documentElement.scrollHeight;
-                    const scrollY = window.scrollY + window.innerHeight * 0.3;
-
-                    if (scrollY < sectionTop) {
-                        progress[section.id] = 0;
-                    } else if (scrollY >= sectionEnd) {
-                        progress[section.id] = 1;
-                    } else {
-                        progress[section.id] = (scrollY - sectionTop) / (sectionEnd - sectionTop);
-                        currentActive = section.id;
-                    }
-                }
-            });
-
-            setSectionProgress(progress);
-            setActiveSection(currentActive);
-        };
-
-        // Calculate section lengths on mount and resize
-        calculateSectionLengths();
-        window.addEventListener('resize', calculateSectionLengths);
-        window.addEventListener('scroll', handleScroll);
-        handleScroll();
-
-        const handleMouseMove = (e: MouseEvent) => {
-            const leftQuarter = window.innerWidth * 0.25;
-            setShowToc(e.clientX < leftQuarter);
-        };
-
-        window.addEventListener('mousemove', handleMouseMove);
-
-        return () => {
-            window.removeEventListener('resize', calculateSectionLengths);
-            window.removeEventListener('scroll', handleScroll);
-            window.removeEventListener('mousemove', handleMouseMove);
-        };
-    }, []);
+    const { activeSection, sectionProgress, sectionDots, showToc } = useTableOfContents({ sections });
 
     return (
         <div className="min-h-screen bg-white">
@@ -124,7 +30,7 @@ export default function CompStratArticle({ onNavigate }: CompStratArticleProps) 
                 <div className="relative prose prose-gray lg:prose-lg max-w-3xl mx-auto">
                     {/* TOC slides in from left when cursor enters left quarter */}
                     <div className={`absolute top-0 h-full hidden lg:block left-[calc((100vw-48rem)/-4)] transition-all duration-300 ease-out ${showToc ? 'opacity-100 -translate-x-1/2' : 'opacity-0 -translate-x-full'}`}>
-                        <TableOfContents activeSection={activeSection} sectionProgress={sectionProgress} sectionDots={sectionDots} />
+                        <TableOfContents sections={sections} activeSection={activeSection} sectionProgress={sectionProgress} sectionDots={sectionDots} />
                     </div>
                     <div className="article-body">
                         <h2 id="about">About the Class</h2>

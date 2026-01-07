@@ -1,18 +1,14 @@
 import ProgressIndicator from "./ProgressIndicator";
-
-export const sections = [
-    { id: 'about', title: 'About the Class' },
-    { id: 'learned', title: 'What I Learned' },
-    { id: 'deep-dive', title: 'Deep Dive' },
-];
+import { Section } from "../hooks/useTableOfContents";
 
 interface TableOfContentsProps {
+    sections: Section[];
     activeSection: string;
     sectionProgress: Record<string, number>;
     sectionDots: Record<string, number>;
 }
 
-export default function TableOfContents({ activeSection, sectionProgress, sectionDots }: TableOfContentsProps) {
+export default function TableOfContents({ sections, activeSection, sectionProgress, sectionDots }: TableOfContentsProps) {
     return (
         <nav className="sticky top-[10vh] py-2 px-4">
                 <div className="space-y-1">
