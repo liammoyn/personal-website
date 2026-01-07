@@ -83,6 +83,7 @@ export default function CompStratArticle({ onNavigate }: CompStratArticleProps) 
     const [activeSection, setActiveSection] = useState(sections[0].id);
     const [sectionProgress, setSectionProgress] = useState<Record<string, number>>({});
     const [sectionDots, setSectionDots] = useState<Record<string, number>>({});
+    const [showToc, setShowToc] = useState(false);
 
     useEffect(() => {
         const calculateSectionLengths = () => {
@@ -165,9 +166,17 @@ export default function CompStratArticle({ onNavigate }: CompStratArticleProps) 
         window.addEventListener('scroll', handleScroll);
         handleScroll();
 
+        const handleMouseMove = (e: MouseEvent) => {
+            const leftQuarter = window.innerWidth * 0.25;
+            setShowToc(e.clientX < leftQuarter);
+        };
+
+        window.addEventListener('mousemove', handleMouseMove);
+
         return () => {
             window.removeEventListener('resize', calculateSectionLengths);
             window.removeEventListener('scroll', handleScroll);
+            window.removeEventListener('mousemove', handleMouseMove);
         };
     }, []);
 
@@ -183,8 +192,8 @@ export default function CompStratArticle({ onNavigate }: CompStratArticleProps) 
                     </div>
                 </div>
                 <div className="relative prose prose-gray lg:prose-lg max-w-3xl mx-auto">
-                    {/* TOC centered in left margin */}
-                    <div className="absolute top-0 h-full hidden lg:block left-[calc((100vw-48rem)/-4)] -translate-x-1/2">
+                    {/* TOC slides in from left when cursor enters left quarter */}
+                    <div className={`absolute top-0 h-full hidden lg:block left-[calc((100vw-48rem)/-4)] transition-all duration-300 ease-out ${showToc ? 'opacity-100 -translate-x-1/2' : 'opacity-0 -translate-x-full'}`}>
                         <TableOfContents activeSection={activeSection} sectionProgress={sectionProgress} sectionDots={sectionDots} />
                     </div>
                     <div className="article-body">
@@ -239,7 +248,7 @@ export default function CompStratArticle({ onNavigate }: CompStratArticleProps) 
                         <p>The lesson from platform economics is that market structure is predictable, but only if you look at the right factors. Through disciplined market evaluation, you can make smarter, long-term strategy decisions.</p>
                     </div>
                 </div>
-                <hr />
+                <hr className="max-w-3xl mx-auto" />
             </div>
 
             <footer className="py-32 px-6 bg-gray-900 text-white">
