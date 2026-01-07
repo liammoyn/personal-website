@@ -38,7 +38,7 @@ export const educationData: Education[] = [
     {
         icon: GraduationCap,
         degree: 'Masters of Business Administration',
-        school: 'Chicago Booth',
+        school: 'The University of Chicago Booth School of Business',
         period: '2024 - 2026',
         description: 'Specialized in Entreprenuership, Strategic Management, and Applied AI.',
         achievements: [

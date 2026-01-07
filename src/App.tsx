@@ -4,6 +4,7 @@ import { WorkDetail } from './pages/WorkDetail';
 import { ProjectsDetail } from './pages/ProjectsDetail';
 import { Page } from './components/Navigation';
 import LandingPage from './pages/LandingPage';
+import CompStratArticle from './pages/articles/CompStratArticle';
 
 function getPageFromPath(path: string): Page {
   const pathMap: Record<string, Page> = {
@@ -11,6 +12,7 @@ function getPageFromPath(path: string): Page {
     '/writing': 'writing',
     '/work': 'work',
     '/projects': 'projects',
+    '/competitive-strategy': 'competitive-strategy',
   };
   return pathMap[path] || 'home';
 }
@@ -50,6 +52,7 @@ export default function App() {
       {currentPage === 'writing' && <SchoolDetail onNavigate={handleNavigate} />}
       {currentPage === 'work' && <WorkDetail onNavigate={handleNavigate} />}
       {currentPage === 'projects' && <ProjectsDetail onNavigate={handleNavigate} />}
+      {currentPage === 'competitive-strategy' && <CompStratArticle onNavigate={handleNavigate} />}
     </div>
   );
 }

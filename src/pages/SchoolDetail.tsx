@@ -1,12 +1,12 @@
 import { Navigation, Page } from '../components/Navigation';
 import { motion } from 'motion/react';
-import { ArticleSummary, coursesData } from '../public/wriitinginfo'
+import { ArticleSummary, coursesData } from '../public/writinginfo'
 
 interface SchoolDetailProps {
   onNavigate: (page: Page) => void;
 }
 
-const articleCard = (article: ArticleSummary, index: number) => (
+const articleCard = (article: ArticleSummary, index: number, onNavigate: any) => (
   <div
     key={index}
     className={`p-6 border border-gray-200 rounded-lg ${
@@ -14,6 +14,7 @@ const articleCard = (article: ArticleSummary, index: number) => (
         ? 'hover:border-gray-900 cursor-pointer transition-colors'
         : 'opacity-60 cursor-default'
     }`}
+    onClick={() => onNavigate(article.page)}
   >
     <div className="flex justify-between items-start mb-3">
       <h3 className="text-xl text-gray-900">{article.courseName}</h3>
@@ -69,7 +70,7 @@ export function SchoolDetail({ onNavigate }: SchoolDetailProps) {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="grid grid-cols-1 md:grid-cols-2 gap-6"
           >
-            {coursesData.map((article, index) => articleCard(article, index))}
+            {coursesData.map((article, index) => articleCard(article, index, onNavigate))}
           </motion.div>
         </div>
       </div>

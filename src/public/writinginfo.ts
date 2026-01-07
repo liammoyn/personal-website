@@ -1,3 +1,4 @@
+import { Page } from "../components/Navigation"
 
 export interface ArticleSummary {
     courseName: string,
@@ -5,6 +6,7 @@ export interface ArticleSummary {
     summary: string,
     deepDiveTopic: string,
     isFinished: boolean,
+    page?: Page,
 }
 
 const CompStrat: ArticleSummary = {
@@ -13,6 +15,7 @@ const CompStrat: ArticleSummary = {
     summary: "This class goes over industrial anaylsis and decision making in a competitive business environment",
     deepDiveTopic: "Platform Economics & Foundational AI Models",
     isFinished: true,
+    page: 'competitive-strategy',
 }
 
 const NPS: ArticleSummary = {
