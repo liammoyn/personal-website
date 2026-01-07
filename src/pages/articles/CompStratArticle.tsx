@@ -1,77 +1,7 @@
 import { useState, useEffect } from "react";
 import Footer from "../../components/Footer";
 import { Navigation, Page } from "../../components/Navigation";
-
-const sections = [
-    { id: 'about', title: 'About the Class' },
-    { id: 'learned', title: 'What I Learned' },
-    { id: 'deep-dive', title: 'Deep Dive' },
-];
-
-interface ProgressIndicatorProps {
-    progress: number;
-    isActive: boolean;
-    dotCount: number;
-}
-
-function ProgressIndicator({ progress, isActive, dotCount }: ProgressIndicatorProps) {
-    const highlightedDots = Math.round(progress * dotCount);
-
-    return (
-        <div
-            className={`flex flex-col items-center space-y-0.5 overflow-hidden transition-all duration-300 ease-out ${
-                isActive ? 'max-h-32 opacity-100 my-2' : 'max-h-0 opacity-0 my-0'
-            }`}
-        >
-            {Array.from({ length: dotCount }).map((_, i) => (
-                <span
-                    key={i}
-                    className={`text-xs cursor-default transition-colors ${
-                        i < highlightedDots
-                            ? 'text-gray-900'
-                            : 'text-gray-300'
-                    }`}
-                >
-                    o
-                </span>
-            ))}
-        </div>
-    );
-}
-
-interface TableOfContentsProps {
-    activeSection: string;
-    sectionProgress: Record<string, number>;
-    sectionDots: Record<string, number>;
-}
-
-function TableOfContents({ activeSection, sectionProgress, sectionDots }: TableOfContentsProps) {
-    return (
-        <nav className="sticky top-[10vh] py-2 px-4">
-                <div className="space-y-1">
-                    {sections.map((section) => (
-                        <div key={section.id}>
-                            <a
-                                href={`#${section.id}`}
-                                className={`block text-sm no-underline transition-colors ${
-                                    activeSection === section.id
-                                        ? 'text-gray-900 font-medium'
-                                        : 'text-gray-400 hover:text-gray-600'
-                                }`}
-                            >
-                                {section.title}
-                            </a>
-                            <ProgressIndicator
-                                progress={sectionProgress[section.id] || 0}
-                                isActive={activeSection === section.id}
-                                dotCount={sectionDots[section.id] || 3}
-                            />
-                        </div>
-                    ))}
-                </div>
-            </nav>
-    );
-}
+import TableOfContents, { sections } from "../../components/TableOfContents";
 
 interface CompStratArticleProps {
     onNavigate: (page: Page) => void;
