@@ -54,11 +54,8 @@ export function SchoolDetail({ onNavigate }: SchoolDetailProps) {
           {/* Education Timeline */}
           <div className="space-y-16 mb-20">
             {educationData.map((edu, index) => (
-              <motion.div
+              <div
                 key={index}
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.2 }}
                 className="border-l-2 border-gray-900 pl-8 py-4"
               >
                 <div className="flex items-start gap-6">
@@ -84,7 +81,7 @@ export function SchoolDetail({ onNavigate }: SchoolDetailProps) {
                     </div>
                   </div>
                 </div>
-              </motion.div>
+              </div>
             ))}
           </div>
 

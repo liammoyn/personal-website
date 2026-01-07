@@ -2,6 +2,7 @@
 import { GraduationCap, BookOpen } from 'lucide-react';
 
 export type EducationType = 'MBA' | "UNDERGRAD"
+export type ProjectType = 'CS_PROJECT' | 'PERSONAL_PROJECT'
 
 export interface Education {
     icon: any,
@@ -30,7 +31,7 @@ export interface Project {
   tech: string[],
   links: { href: string, name: string }[],
   featured: boolean,
-  type: 'CS_PROJECT' | 'PERSONAL_PROJECT',
+  type: ProjectType,
 }
 
 export const educationData: Education[] = [
@@ -67,7 +68,7 @@ export const experienceData: Experience[] = [
         title: 'Technical Product Manager MBA Intern',
         company: 'Amazon Grocery',
         location: 'Austin, TX',
-        period: '2025 - 2025',
+        period: '',
         highlights: [
             'Defined product and technical requirements while assessing third-party marketing technologies for Amazon Grocery, synthesizing cross-functional needs into a VP-backed recommendation impacting $200M+ in annual marketing spend',
             'Prioritized and triaged 200+ accessibility issues on wholefoods.com, coordinating engineering workstreams and implementing automated checks to prevent regression, avoiding $150K+ in potential ADA litigation and improving site accessibility',
@@ -104,7 +105,7 @@ export const experienceData: Experience[] = [
         title: 'Software Development Co-op',
         company: 'Harvard Catalyst at Harvard Medical School',
         location: 'Cambridge, MA',
-        period: '2020 - 2020',
+        period: '',
         highlights: [
             'Developed end-to-end features in an agile software development lifecycle in conjunction with product managers for a new user interface of SHRINE, a tool to help researchers locate patient cohorts at national scale for clinical trial recruitment',
         ],
@@ -115,7 +116,7 @@ export const experienceData: Experience[] = [
         title: 'Software Development Co-op',
         company: 'MineralTree',
         location: 'Cambrdige, MA',
-        period: '2019 - 2019',
+        period: '',
         highlights: [
             'Designed and implemented 3 micro-services to help transition MineralTree, an AP automation software, from a monolithic tech stack to a modern and more performant architecture, reducing operating costs by 30%',
         ],

@@ -1,7 +1,7 @@
 import { Navigation } from '../components/Navigation';
 import { motion } from 'motion/react';
-import { Briefcase, Users, TrendingUp } from 'lucide-react';
-import { experienceData } from '../public/resumeinfo';
+import { Briefcase, Users, TrendingUp, Award } from 'lucide-react';
+import { Education, educationData, Experience, experienceData } from '../public/resumeinfo';
 
 type Page = 'home' | 'school' | 'work' | 'projects';
 
@@ -9,7 +9,91 @@ interface WorkDetailProps {
   onNavigate: (page: Page) => void;
 }
 
+const educationCard = (edu: Education) => {
+  return (
+    <div
+      className="pl-8 py-4"
+    >
+      <div className="flex items-start gap-6">
+        <div className="p-4 bg-gray-50 rounded-lg">
+          <edu.icon className="w-8 h-8 text-gray-900" />
+        </div>
+        <div className="flex-1">
+          <div className="flex items-start justify-between mb-4">
+            <div>
+              <h3 className="text-2xl text-gray-900 mb-2">{edu.degree}</h3>
+              <p className="text-lg text-gray-600">{edu.school}</p>
+            </div>
+            <span className="text-gray-500">{edu.period}</span>
+          </div>
+          <p className="text-gray-600 mb-6">{edu.description}</p>
+          <div className="space-y-2">
+            {edu.achievements.map((achievement, i) => (
+              <div key={i} className="flex items-center gap-2">
+                <Award className="w-4 h-4 text-gray-900" />
+                <span className="text-gray-700">{achievement}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+const workCard = (exp: Experience, index: number, isSubCard: boolean) => {
+  const fullCardClass = "p-8 border border-gray-200rounded-lg hover:border-gray-900 transition-colors"
+  const subCardClass = "px-8 py-4 ml-8 border border-gray-200rounded-lg hover:border-gray-900 transition-colors"
+  return (
+    <div
+      key={index}
+      className={isSubCard ? subCardClass : fullCardClass}
+    >
+      <div className="flex items-start justify-between mb-4">
+        <div>
+          <h3 className="text-2xl text-gray-900 mb-1">{exp.title}</h3>
+          <p className="text-lg text-gray-600">{exp.company} • {exp.location}</p>
+        </div>
+        <span className="text-gray-500 whitespace-nowrap">{exp.period}</span>
+      </div>
+      <div className="space-y-3 mb-6">
+        {exp.highlights.map((highlight, i) => (
+          <div key={i} className="flex items-start gap-3">
+            <div className="w-1.5 h-1.5 rounded-full bg-gray-900 mt-2 shrink-0"></div>
+            <span className="text-gray-700">{highlight}</span>
+          </div>
+        ))}
+      </div>
+      
+      <div className="flex flex-wrap gap-2">
+        {exp.skills.map((skill, i) => (
+          <span
+            key={i}
+            className="px-3 py-1 bg-gray-100 text-gray-700 text-sm rounded"
+          >
+            {skill}
+          </span>
+        ))}
+      </div>
+    </div>
+
+  )
+}
+
 export function WorkDetail({ onNavigate }: WorkDetailProps) {
+  const section1 = {
+    education: educationData.find(e => e.type == "MBA")!,
+    jobs: experienceData.filter(e => e.during == "MBA")
+  }
+  const section2 = {
+    education: null,
+    jobs: experienceData.filter(e => !e.during)
+  }
+  const section3 = {
+    education: educationData.find(e => e.type == "UNDERGRAD")!,
+    jobs: experienceData.filter(e => e.during == "UNDERGRAD")
+  }
+
   return (
     <div className="min-h-screen bg-white">
       <Navigation onNavigate={onNavigate} onPage='work' />
@@ -61,42 +145,23 @@ export function WorkDetail({ onNavigate }: WorkDetailProps) {
 
           {/* Experience Timeline */}
           <div className="space-y-12">
-            {experienceData.map((exp, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.3 + index * 0.1 }}
-                className="border border-gray-200 p-8 rounded-lg hover:border-gray-900 transition-colors"
-              >
-                <div className="flex items-start justify-between mb-4">
-                  <div>
-                    <h3 className="text-2xl text-gray-900 mb-1">{exp.title}</h3>
-                    <p className="text-lg text-gray-600">{exp.company} • {exp.location}</p>
-                  </div>
-                  <span className="text-gray-500 whitespace-nowrap">{exp.period}</span>
-                </div>
-                <div className="space-y-3 mb-6">
-                  {exp.highlights.map((highlight, i) => (
-                    <div key={i} className="flex items-start gap-3">
-                      <div className="w-1.5 h-1.5 rounded-full bg-gray-900 mt-2 shrink-0"></div>
-                      <span className="text-gray-700">{highlight}</span>
-                    </div>
-                  ))}
-                </div>
-                
-                <div className="flex flex-wrap gap-2">
-                  {exp.skills.map((skill, i) => (
-                    <span
-                      key={i}
-                      className="px-3 py-1 bg-gray-100 text-gray-700 text-sm rounded"
-                    >
-                      {skill}
-                    </span>
-                  ))}
-                </div>
-              </motion.div>
-            ))}
+            <div className='border-l-2 border-gray-900'>
+              {educationCard(section1.education)}
+              <div className='space-y-8'>
+                {section1.jobs.map((exp, index) => workCard(exp, index, true))}
+              </div>
+            </div>
+            <div className=''>
+              <div className='space-y-8'>
+                {section2.jobs.map((exp, index) => workCard(exp, index, false))}
+              </div>
+            </div>
+            <div className='border-l-2 border-gray-900'>
+              {educationCard(section3.education)}
+              <div className='space-y-4'>
+                {section3.jobs.map((exp, index) => workCard(exp, index, true))}
+              </div>
+            </div>
           </div>
         </div>
       </div>
