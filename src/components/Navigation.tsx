@@ -8,9 +8,17 @@ interface NavigationProps {
   onPage: Page
 }
 
+// Maps pages to their parent page (defaults to 'home' if not specified)
+const parentPageMap: Partial<Record<Page, { label: string; page: Page }>> = {
+  'competitive-strategy': { label: 'Back', page: 'writing' },
+  // Future articles can be added here
+};
+
 export function Navigation({ onNavigate, onPage }: NavigationProps) {
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
+
+  const backConfig = parentPageMap[onPage] || { label: 'Home', page: 'home' };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -37,11 +45,11 @@ export function Navigation({ onNavigate, onPage }: NavigationProps) {
       <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
         {onPage != 'home' ? (
           <a
-            onClick={() => onNavigate('home')}
+            onClick={() => onNavigate(backConfig.page)}
             className="flex items-center gap-2 text-gray-900 hover:text-gray-600 transition-colors cursor-pointer"
           >
             <ArrowLeft className="w-5 h-5" />
-            <span>Home</span>
+            <span>{backConfig.label}</span>
           </a>
         ) : (
           <div/>
