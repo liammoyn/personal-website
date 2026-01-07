@@ -8,6 +8,7 @@ import { socials } from '../public/linkconfig';
 import { Page } from '../components/Navigation';
 import { projectData } from '../public/resumeinfo';
 import ProjectCard from '../components/ProjectCard';
+import Footer from '../components/Footer';
 
 
 export default function LandingPage({ onNavigate }: { onNavigate: (page: Page) => void }) {
@@ -33,12 +34,6 @@ export default function LandingPage({ onNavigate }: { onNavigate: (page: Page) =
         <HeroSection imageMargin={imageMargin} />
       </section>
 
-      {/* Looking For Section */}
-      {/* <section className="min-h-screen flex items-center justify-center px-6 bg-white relative">
-        <LookingForSection onNavigate={onNavigate} />
-        <div className="absolute top-8 right-8 text-gray-300 text-sm">Now</div>
-      </section> */}
-
       {/* MBA Section - Most Recent */}
       <section id="mba" className="min-h-screen flex items-center justify-center px-6 bg-linear-to-b from-gray-100 to-gray-50 relative">
         <MBASection onNavigate={onNavigate} />
@@ -57,15 +52,9 @@ export default function LandingPage({ onNavigate }: { onNavigate: (page: Page) =
         <div className="absolute top-8 right-8 text-gray-500 text-sm">2020-2026</div>
       </section>
 
-      {/* Undergrad Section */}
-      {/* <section className="min-h-screen flex items-center justify-center px-6 bg-gray-50 relative">
-        <UndergradSection onNavigate={onNavigate} />
-        <div className="absolute top-8 right-8 text-gray-600 text-sm">2014-2018</div>
-      </section> */}
-
       {/* Footer CTA */}
       <footer className="py-32 px-6 bg-gray-900 text-white">
-        <FooterSection onNavigate={onNavigate} />
+        <Footer onNavigate={onNavigate} />
       </footer>
     </div>
   );
@@ -326,76 +315,3 @@ function ProjectsSection({ onNavigate }: { onNavigate: (page: Page) => void }) {
     </div>
   )
 }
-
-function FooterSection({ onNavigate }: { onNavigate: (page: Page) => void }) {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: false, margin: "-20%" });
-
-  return (
-    <div>
-      <div className="max-w-4xl mx-auto text-center">
-        <motion.div
-          ref={ref}
-          initial={{ opacity: 0, y: 50 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
-          transition={{ duration: 0.8 }}
-        >
-
-          <h2 className="text-5xl md:text-6xl mb-8">Let's Build Something</h2>
-          <p className="text-xl text-gray-400 mb-12 max-w-2xl mx-auto">
-            I'm looking for opportunities to join innovative teams and create products that matter.
-            Let's connect.
-          </p>
-
-          <div className="flex flex-wrap gap-4 justify-center mb-16">
-            <a
-              href={socials.email}
-              className="px-8 py-4 bg-white text-gray-900 rounded-lg hover:bg-gray-100 transition-colors inline-flex items-center gap-2"
-            >
-              <Mail className="w-5 h-5" />
-              Get in Touch
-            </a>
-            <a
-              href="#"
-              className="px-8 py-4 border border-white text-white rounded-lg hover:bg-white hover:text-gray-900 transition-colors"
-            >
-              {/* TODO: Add resume download link */}
-              Download Resume
-            </a>
-          </div>
-        </motion.div>
-
-        <div className="border-t border-gray-800 pt-12">
-          <p className="text-gray-500 mb-6">Explore More</p>
-          <div className="flex flex-wrap gap-6 justify-center">
-            <a
-              onClick={() => onNavigate('writing')}
-              className="text-gray-300 hover:text-white transition-colors cursor-pointer"
-            >
-              Education
-            </a>
-            <a
-              onClick={() => onNavigate('work')}
-              className="text-gray-300 hover:text-white transition-colors cursor-pointer"
-            >
-              Experience
-            </a>
-            <a
-              onClick={() => onNavigate('projects')}
-              className="text-gray-300 hover:text-white transition-colors cursor-pointer"
-            >
-              Projects
-            </a>
-            <a href={socials.linkedIn} className="text-gray-300 hover:text-white transition-colors cursor-pointer">
-              LinkedIn
-            </a>
-            <a href={socials.github} className="text-gray-300 hover:text-white transition-colors cursor-pointer">
-              GitHub
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  )
-}
-

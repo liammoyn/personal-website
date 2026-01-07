@@ -1,3 +1,4 @@
+import Footer from "../../components/Footer";
 import { Navigation, Page } from "../../components/Navigation";
 
 
@@ -63,8 +64,13 @@ export default function CompStratArticle({ onNavigate }: CompStratArticleProps) 
                     </ul>
                     <p>In conclusion, the foundational model market is still up for grabs. While the entire industry is unlikely to tip towards a single competitor, there’s still potential for increased consolidation and profits for the winners. The race is ongoing, but I predict the victors will be those who understand they’re playing a positioning game, not a race to a tipping point.</p>
                     <p>The lesson from platform economics is that market structure is predictable, but only if you look at the right factors. Through disciplined market evaluation, you can make smarter, long-term strategy decisions.</p>
+                    <hr></hr>
                 </div>
             </div>
+
+            <footer className="py-32 px-6 bg-gray-900 text-white">
+                <Footer onNavigate={onNavigate} />
+            </footer>
         </div>
     )
 }
