@@ -1,5 +1,5 @@
-import { Project } from "../pages/ProjectsDetail"
-import { ExternalLink, Code2 } from 'lucide-react';
+import { ExternalLink } from 'lucide-react';
+import { Project } from '../public/resumeinfo';
 
 interface ProjectCard {
     project: Project,

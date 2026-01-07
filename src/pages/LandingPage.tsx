@@ -6,7 +6,7 @@ import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext
 import { ImageWithFallback } from '../components/figma/ImageWithFallback';
 import { socials } from '../public/linkconfig';
 import { Page } from '../components/Navigation';
-import { projectData } from './ProjectsDetail';
+import { projectData } from '../public/resumeinfo';
 import ProjectCard from '../components/ProjectCard';
 
 
@@ -320,7 +320,7 @@ function ProjectsSection({ onNavigate }: { onNavigate: (page: Page) => void }) {
         onClick={() => onNavigate('school')}
         className="group cursor-pointer inline-flex items-center gap-2 text-gray-900 hover:gap-4 transition-all"
       >
-        <span className="text-lg">See my entire portfolio</span>
+        <span className="text-lg">Browse my entire portfolio</span>
         <ArrowRight className="w-5 h-5" />
       </button>
     </div>

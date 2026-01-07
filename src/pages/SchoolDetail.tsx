@@ -1,40 +1,13 @@
-import { Navigation } from '../components/Navigation';
+import { Navigation, Page } from '../components/Navigation';
 import { motion } from 'motion/react';
-import { GraduationCap, BookOpen, Award } from 'lucide-react';
-
-type Page = 'home' | 'school' | 'work' | 'projects';
+import { Award } from 'lucide-react';
+import { educationData } from '../public/resumeinfo'
 
 interface SchoolDetailProps {
   onNavigate: (page: Page) => void;
 }
 
 export function SchoolDetail({ onNavigate }: SchoolDetailProps) {
-  const education = [
-    {
-      icon: GraduationCap,
-      degree: 'Master of Science in Computer Science',
-      school: 'University Name',
-      year: '2020 - 2022',
-      description: 'Specialized in Machine Learning and Artificial Intelligence. Thesis on neural network optimization.',
-      achievements: [
-        'GPA: 3.9/4.0',
-        'Graduate Teaching Assistant',
-        'Published research paper on deep learning'
-      ]
-    },
-    {
-      icon: BookOpen,
-      degree: 'Bachelor of Science in Computer Science',
-      school: 'University Name',
-      year: '2016 - 2020',
-      description: 'Foundation in software engineering, algorithms, and system design.',
-      achievements: [
-        'Summa Cum Laude',
-        'Dean\'s List all semesters',
-        'President of Computer Science Club'
-      ]
-    }
-  ];
 
   const courses = [
     'Advanced Algorithms',
@@ -46,6 +19,12 @@ export function SchoolDetail({ onNavigate }: SchoolDetailProps) {
     'Database Systems',
     'Human-Computer Interaction'
   ];
+
+  /**
+   * I've spent my time at Booth taking classes in Strategic Management, Entreprenuership, and Applied AI.
+   * I'm often asked about what I've learned through getting my MBA, so I've started a writing series detailing the
+   * lessons I've learned from each of my classes and then applying those learnings to the broader technology space.
+   */
 
   return (
     <div className="min-h-screen bg-white">
@@ -74,7 +53,7 @@ export function SchoolDetail({ onNavigate }: SchoolDetailProps) {
 
           {/* Education Timeline */}
           <div className="space-y-16 mb-20">
-            {education.map((edu, index) => (
+            {educationData.map((edu, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 30 }}
@@ -92,7 +71,7 @@ export function SchoolDetail({ onNavigate }: SchoolDetailProps) {
                         <h3 className="text-2xl text-gray-900 mb-2">{edu.degree}</h3>
                         <p className="text-lg text-gray-600">{edu.school}</p>
                       </div>
-                      <span className="text-gray-500">{edu.year}</span>
+                      <span className="text-gray-500">{edu.period}</span>
                     </div>
                     <p className="text-gray-600 mb-6">{edu.description}</p>
                     <div className="space-y-2">
@@ -110,10 +89,7 @@ export function SchoolDetail({ onNavigate }: SchoolDetailProps) {
           </div>
 
           {/* Notable Coursework */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
+          <div
             className="bg-gray-50 p-12 rounded-lg"
           >
             <h2 className="text-3xl text-gray-900 mb-8">Notable Coursework</h2>
@@ -127,7 +103,7 @@ export function SchoolDetail({ onNavigate }: SchoolDetailProps) {
                 </div>
               ))}
             </div>
-          </motion.div>
+          </div>
         </div>
       </div>
     </div>

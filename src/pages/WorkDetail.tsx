@@ -1,6 +1,7 @@
 import { Navigation } from '../components/Navigation';
 import { motion } from 'motion/react';
 import { Briefcase, Users, TrendingUp } from 'lucide-react';
+import { experienceData } from '../public/resumeinfo';
 
 type Page = 'home' | 'school' | 'work' | 'projects';
 
@@ -9,65 +10,6 @@ interface WorkDetailProps {
 }
 
 export function WorkDetail({ onNavigate }: WorkDetailProps) {
-  const experiences = [
-    {
-      title: 'Technical Product Manager MBA Intern',
-      company: 'Amazon Grocery',
-      location: 'Austin, TX',
-      period: '2025 - 2025',
-      highlights: [
-        'Defined product and technical requirements while assessing third-party marketing technologies for Amazon Grocery, synthesizing cross-functional needs into a VP-backed recommendation impacting $200M+ in annual marketing spend',
-        'Prioritized and triaged 200+ accessibility issues on wholefoods.com, coordinating engineering workstreams and implementing automated checks to prevent regression, avoiding $150K+ in potential ADA litigation and improving site accessibility',
-      ],
-      skills: ['Product Strategy', 'WCAG Accessibility', 'Cross-Team Alignment', 'Marketing Technology', 'B2B SaaS Procurement']
-    },
-    {
-      title: 'Software Development Engineer II',
-      company: 'Amazon Web Services',
-      location: 'Seattle, WA',
-      period: '2023 - 2024',
-      highlights: [
-        'Led design and development of a distributed, asynchronous work execution system powering CloudWatch Application Signals, a full-stack observability platform, enabling 1M+ concurrent fault-tolerant work items at scale',
-        'Owned the development of a shared frontend API across 3 development teams, identifying workflow pain points, creating development standards, and enforcing mechanisms to reduce integration friction and deliver efficient, robust software',
-        'Projected customer usage patterns and analyzed software costs to design an intuitive pricing model with senior leadership for CloudWatch Application Signals, establishing a cost-following revenue structure compatible with multiple growth projections',
-        'Provided technical mentorship through AWS\'s intern and onboarding programs, supporting 10 interns and 2 early-career engineers 1:1, being recognized as a key mentor in full-time hiring and promotion recommendations'
-      ],
-      skills: ['Distributed Systems', 'System Design', 'Kotlin', 'AWS', 'Software Architecture', 'Mentorship']
-    },
-    {
-      title: 'Software Development Engineer I',
-      company: 'Amazon Web Services',
-      location: 'Seattle, WA',
-      period: '2022 - 2023',
-      highlights: [
-        'Launched, iterated, and maintained CloudWatch Evidently, a cloud-based A/B testing service, across multiple programming languages, technology stacks, and cross-service teams, scaling product to 10k monthly active users',
-        'Conducted user research through weekly stakeholder syncs and 10+ customer interview, synthesizing insights into feature proposals and advocating for customer needs in roadmap discussions',
-        'Designed and implemented features such as a free trial metering solution, an in-browser interactive client with complex data visualizations, and a high-throughput, fault tolerant, client-side evaluation agent, prioritizing for reliability and performance',
-      ],
-      skills: ['Full-Stack Web Development', 'Java', 'A/B Testing', 'User Research', 'React', 'AWS', 'Data Visualization']
-    },
-    {
-      title: 'Software Development Co-op',
-      company: 'Harvard Catalyst at Harvard Medical School',
-      location: 'Cambridge, MA',
-      period: '2020 - 2020',
-      highlights: [
-        'Developed end-to-end features in an agile software development lifecycle in conjunction with product managers for a new user interface of SHRINE, a tool to help researchers locate patient cohorts at national scale for clinical trial recruitment',
-      ],
-      skills: ['Frontend Development', 'React', 'Scala', 'Agile', 'Healthcare Tech']
-    },
-    {
-      title: 'Software Development Co-op',
-      company: 'MineralTree',
-      location: 'Cambrdige, MA',
-      period: '2019 - 2019',
-      highlights: [
-        'Designed and implemented 3 micro-services to help transition MineralTree, an AP automation software, from a monolithic tech stack to a modern and more performant architecture, reducing operating costs by 30%',
-      ],
-      skills: ['Microservices', 'Java', 'GraphQL', 'Architecture Transitions', 'Cost Optimization']
-    },
-  ];
-
   return (
     <div className="min-h-screen bg-white">
       <Navigation onNavigate={onNavigate} onPage='work' />
@@ -119,7 +61,7 @@ export function WorkDetail({ onNavigate }: WorkDetailProps) {
 
           {/* Experience Timeline */}
           <div className="space-y-12">
-            {experiences.map((exp, index) => (
+            {experienceData.map((exp, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 30 }}
