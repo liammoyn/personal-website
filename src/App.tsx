@@ -8,7 +8,7 @@ import LandingPage from './pages/LandingPage';
 function getPageFromPath(path: string): Page {
   const pathMap: Record<string, Page> = {
     '/': 'home',
-    '/school': 'school',
+    '/writing': 'writing',
     '/work': 'work',
     '/projects': 'projects',
   };
@@ -45,7 +45,7 @@ export default function App() {
   return (
     <div>
       {currentPage === 'home' && <LandingPage onNavigate={handleNavigate} />}
-      {currentPage === 'school' && <SchoolDetail onNavigate={handleNavigate} />}
+      {currentPage === 'writing' && <SchoolDetail onNavigate={handleNavigate} />}
       {currentPage === 'work' && <WorkDetail onNavigate={handleNavigate} />}
       {currentPage === 'projects' && <ProjectsDetail onNavigate={handleNavigate} />}
     </div>

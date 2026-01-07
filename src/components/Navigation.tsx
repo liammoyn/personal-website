@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { ArrowLeft } from 'lucide-react';
 
-export type Page = 'home' | 'school' | 'work' | 'projects';
+export type Page = 'home' | 'writing' | 'work' | 'projects';
 
 interface NavigationProps {
   onNavigate: (page: Page) => void;
@@ -49,10 +49,10 @@ export function Navigation({ onNavigate, onPage }: NavigationProps) {
         
         <div className="flex gap-8">
           <a
-            onClick={() => onNavigate('school')}
-            className={onPage == 'school' ? thisPageLinkStyle : defaultLinkStyle}
+            onClick={() => onNavigate('writing')}
+            className={onPage == 'writing' ? thisPageLinkStyle : defaultLinkStyle}
           >
-            Education
+            Writing
           </a>
           <a
             onClick={() => onNavigate('work')}

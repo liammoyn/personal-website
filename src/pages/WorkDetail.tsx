@@ -1,9 +1,7 @@
-import { Navigation } from '../components/Navigation';
+import { Navigation, Page } from '../components/Navigation';
 import { motion } from 'motion/react';
 import { Briefcase, Users, TrendingUp, Award } from 'lucide-react';
 import { Education, educationData, Experience, experienceData } from '../public/resumeinfo';
-
-type Page = 'home' | 'school' | 'work' | 'projects';
 
 interface WorkDetailProps {
   onNavigate: (page: Page) => void;

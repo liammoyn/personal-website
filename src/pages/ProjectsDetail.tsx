@@ -1,10 +1,8 @@
-import { Navigation } from '../components/Navigation';
+import { Navigation, Page } from '../components/Navigation';
 import { motion } from 'motion/react';
 import { ExternalLink, Code2 } from 'lucide-react';
 import ProjectCard from '../components/ProjectCard';
 import { projectData } from '../public/resumeinfo';
-
-type Page = 'home' | 'school' | 'work' | 'projects';
 
 interface ProjectsDetailProps {
   onNavigate: (page: Page) => void;
