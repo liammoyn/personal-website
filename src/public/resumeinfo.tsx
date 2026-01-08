@@ -1,5 +1,7 @@
 
-import { GraduationCap, BookOpen } from 'lucide-react';
+import { GraduationCap, BookOpen, ExternalLink } from 'lucide-react';
+import { GitHubIcon } from '../components/icons/GitHubIcon';
+import { LeetCodeIcon } from '../components/icons/LeetCodeIcon';
 
 export type EducationType = 'MBA' | "UNDERGRAD"
 export type ProjectType = 'CS_PROJECT' | 'PERSONAL_PROJECT'
@@ -29,7 +31,11 @@ export interface Project {
   category: string,
   description: string,
   tech: string[],
-  links: { href: string, name: string }[],
+  links: {
+    href: string,
+    name: string,
+    icon: React.ComponentType<{ className?: string }>,
+  }[],
   featured: boolean,
   type: ProjectType,
 }
@@ -135,6 +141,7 @@ export const projectData: Project[] = [
       {
         href: 'https://github.com/liammoyn/hexempire',
         name: 'GitHub',
+        icon: GitHubIcon,
       }
     ],
     featured: true,
@@ -149,6 +156,7 @@ export const projectData: Project[] = [
       {
         href: 'https://github.com/liammoyn/minesweeperbot',
         name: 'GitHub',
+        icon: GitHubIcon,
       }
     ],
     featured: true,
@@ -163,6 +171,7 @@ export const projectData: Project[] = [
       {
         href: 'https://github.com/liammoyn/article-generator',
         name: 'GitHub',
+        icon: GitHubIcon,
       }
     ],
     featured: true,
@@ -177,6 +186,7 @@ export const projectData: Project[] = [
       {
         href: 'https://github.com/liammoyn/personal-website',
         name: 'GitHub',
+        icon: GitHubIcon,
       }
     ],
     featured: true,
@@ -191,10 +201,12 @@ export const projectData: Project[] = [
       {
         href: 'https://github.com/liammoyn/leetcode-scaffold',
         name: 'GitHub',
+        icon: GitHubIcon,
       },
       {
         href: 'https://leetcode.com/u/liammoyn/',
         name: 'My LeetCode',
+        icon: LeetCodeIcon,
       }
     ],
     featured: false,
@@ -209,6 +221,7 @@ export const projectData: Project[] = [
       {
         href: 'https://github.com/liammoyn/SmartPedal',
         name: 'GitHub',
+        icon: GitHubIcon,
       }
     ],
     featured: false,
@@ -223,6 +236,7 @@ export const projectData: Project[] = [
       {
         href: 'https://www.trustvector.ai/',
         name: 'Website',
+        icon: ExternalLink,
       }
     ],
     featured: false,
@@ -237,6 +251,7 @@ export const projectData: Project[] = [
       {
         href: 'https://www.c4cneu.com/',
         name: 'Website',
+        icon: ExternalLink,
       }
     ],
     featured: false,
@@ -251,6 +266,7 @@ export const projectData: Project[] = [
       {
         href: 'https://www.microsoft.com/en-us/teals',
         name: 'Website',
+        icon: ExternalLink,
       }
     ],
     featured: false,

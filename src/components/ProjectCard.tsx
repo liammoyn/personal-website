@@ -1,4 +1,3 @@
-import { ExternalLink } from 'lucide-react';
 import { Project } from '../public/resumeinfo';
 
 interface ProjectCard {
@@ -33,15 +32,19 @@ export default function ProjectCard({project, index}: ProjectCard) {
             </div>
 
             <div className="flex gap-4">
-            {project.links.map((link, i) => (
-                <a
-                href={link.href}
-                className="flex items-center gap-2 text-gray-900 hover:text-gray-600 transition-colors"
-                >
-                <ExternalLink className="w-4 h-4" />
-                <span>{link.name}</span>
-                </a>
-            ))}
+            {project.links.map((link, i) => {
+                const Icon = link.icon;
+                return (
+                    <a
+                    key={i}
+                    href={link.href}
+                    className="flex items-center gap-2 text-gray-900 hover:text-gray-600 transition-colors"
+                    >
+                    <Icon className="w-4 h-4" />
+                    <span>{link.name}</span>
+                    </a>
+                );
+            })}
             </div>
         </div>
     )
