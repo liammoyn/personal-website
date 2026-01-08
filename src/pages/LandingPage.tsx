@@ -63,21 +63,41 @@ export default function LandingPage({ onNavigate }: { onNavigate: (page: Page) =
 function HeroSection({ imageMargin }: { imageMargin: number }) {
   return (
     <>
-      <div className="w-full h-[50vh] lg:w-[50vw] lg:h-screen relative overflow-hidden">
+      <motion.div
+        className="w-full h-[50vh] lg:w-[50vw] lg:h-screen relative overflow-hidden"
+        initial={{ opacity: 0, x: -20 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.6 }}
+      >
         <ImageWithFallback
           src="HQ_Portrait.jpg"
           alt="Minimalist workspace"
           className="object-fill lg:object-cover lg:h-screen relative top-(--image-margin) lg:top-0"
           style={{ '--image-margin': `${imageMargin}px` } as React.CSSProperties}
         />
-      </div>
+      </motion.div>
       <div className="flex flex-row lg:flex-col lg:w-[50vw] justify-center p-12 lg:py-16 font-serif">
         <div>
-          <img src="hi.webp" />
-          <p className="text-4xl py-10">My name is Liam, I'm an engineer and product developer</p>
+          <motion.img
+            src="hi.webp"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+          />
+          <motion.p
+            className="text-4xl py-10"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+          >
+            My name is Liam, I'm an engineer and product developer
+          </motion.p>
         </div>
-        {/* TODO: Make this a card */}
-        <div>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.6 }}
+        >
           <h4 className="text-2xl">See what I've been up to:</h4>
           <ul className='text-lg pl-4'>
             {[
@@ -92,7 +112,7 @@ function HeroSection({ imageMargin }: { imageMargin: number }) {
               </li>
             ))}
           </ul>
-        </div>
+        </motion.div>
       </div>
     </>
   )
