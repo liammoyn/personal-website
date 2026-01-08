@@ -1,10 +1,9 @@
 import { motion, useInView } from 'motion/react';
 import { useRef, useState, useEffect } from 'react';
 import { Navigation } from '../components/Navigation';
-import { ArrowRight, GraduationCap, Briefcase, Code2, Rocket, Mail, ChevronDown, FileText, ExternalLink, Github } from 'lucide-react';
+import { ArrowRight, Code2, FileText } from 'lucide-react';
 import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext } from '../components/ui/carousel';
 import { ImageWithFallback } from '../components/figma/ImageWithFallback';
-import { socials } from '../public/linkconfig';
 import { Page } from '../components/Navigation';
 import { projectData } from '../public/resumeinfo';
 import ProjectCard from '../components/ProjectCard';
@@ -241,7 +240,7 @@ function AmazonSection({ onNavigate }: { onNavigate: (page: Page) => void }) {
               Amazon
             </h2>
             <p className="text-xl text-gray-600 mb-8">
-              Built scalable systems and led technical initiatives for AWS services.
+              Built scalable systems and led technical initiatives for Amazon services.
               Worked with distributed systems, cloud infrastructure, and served millions of customers.
             </p>
           </div>

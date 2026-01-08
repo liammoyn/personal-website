@@ -12,7 +12,7 @@ export interface ArticleSummary {
 const CompStrat: ArticleSummary = {
     courseName: "Competitive Strategy",
     wordCount: "2.4k",
-    summary: "This class goes over industrial anaylsis and decision making in a competitive business environment",
+    summary: "Using applied microeconomics to guide firm decision making in uncertain and competitive business environments",
     deepDiveTopic: "Platform Economics & Foundational AI Models",
     isFinished: true,
     page: 'competitive-strategy',
@@ -21,23 +21,23 @@ const CompStrat: ArticleSummary = {
 const NPS: ArticleSummary = {
     courseName: "New Products and Services",
     wordCount: "3.1k",
-    summary: "User centered design and scaling innovation",
+    summary: "Hands on user centered design provides a framework to scale innovation for new and existing busineses",
     deepDiveTopic: "Concept Testing AI Products",
-    isFinished: true,
+    isFinished: false,
 }
 
 const NVS: ArticleSummary = {
     courseName: "New Venture Strategy",
     wordCount: "2.6k",
-    summary: "What determines if a startup succeeds or fails and what rules can be pulled from the randomness",
+    summary: "Startups succeed or fail for a variety of reasons but rules and models can be used to understand their prospects and make sense from the randomness",
     deepDiveTopic: "Competitive Advantage of Major AI Companies",
-    isFinished: true,
+    isFinished: false,
 }
 
 const MarStrat: ArticleSummary = {
     courseName: "Marketing Strategy",
     wordCount: "",
-    summary: "How do marketers use data to make good products resonate with people",
+    summary: "Modern marketing is quantative and data driven in its approach to help products resonate with their audiences",
     deepDiveTopic: "",
     isFinished: false,
 }
@@ -45,7 +45,7 @@ const MarStrat: ArticleSummary = {
 const BuildAI: ArticleSummary = {
     courseName: "Building an AI Company",
     wordCount: "",
-    summary: "How does the startup math change when working with AI",
+    summary: "AI changes what's possible, but firms need to understand their limitations and opportunities in the AI space if they want to be successful",
     deepDiveTopic: "",
     isFinished: false,
 }
@@ -53,7 +53,7 @@ const BuildAI: ArticleSummary = {
 const CorpFin: ArticleSummary = {
     courseName: "Corporate Finance",
     wordCount: "",
-    summary: "What are the tools and mechanisms corporations use finance their ventures",
+    summary: "Corporations need to constantly balance opportunity costs and funding avenues to intelligently navigate the bredth of available projects for them to invest in",
     deepDiveTopic: "",
     isFinished: false,
 }
