@@ -18,7 +18,7 @@ export default function ProjectCard({project, index}: ProjectCard) {
             </span>
             </div>
             <h3 className="text-2xl text-gray-900 mb-4">{project.title}</h3>
-            <p className="text-gray-600 mb-6 flex-grow">{project.description}</p>
+            <p className="text-gray-600 mb-6 grow">{project.description}</p>
 
             <div className="flex flex-wrap gap-2 mb-6">
             {project.tech.map((tech, i) => (

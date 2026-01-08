@@ -1,6 +1,6 @@
 import { Navigation, Page } from '../components/Navigation';
 import { motion } from 'motion/react';
-import { Briefcase, Users, TrendingUp, Award } from 'lucide-react';
+import { Award } from 'lucide-react';
 import { Education, educationData, Experience, experienceData } from '../public/resumeinfo';
 
 interface WorkDetailProps {
@@ -110,37 +110,17 @@ export function WorkDetail({ onNavigate }: WorkDetailProps) {
               Professional Journey
             </h1>
             <p className="text-xl text-gray-600 max-w-3xl">
-              From startups to scale-ups, I've had the privilege of working with talented 
-              teams to build products that make a difference.
+              I built my foundation as a software engineer, shipping web products and leading distributed systems work. Now pursuing my MBA, I'm combining technical depth with product strategy to build technology that delivers real impact.
             </p>
           </motion.div>
 
-          {/* Stats */}
-          {/* <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="grid grid-cols-3 gap-8 mb-20"
-          >
-            <div className="text-center p-8 bg-gray-50 rounded-lg">
-              <Briefcase className="w-8 h-8 text-gray-900 mx-auto mb-4" />
-              <div className="text-4xl text-gray-900 mb-2">5+</div>
-              <div className="text-gray-600">Years Experience</div>
-            </div>
-            <div className="text-center p-8 bg-gray-50 rounded-lg">
-              <Users className="w-8 h-8 text-gray-900 mx-auto mb-4" />
-              <div className="text-4xl text-gray-900 mb-2">3</div>
-              <div className="text-gray-600">Companies</div>
-            </div>
-            <div className="text-center p-8 bg-gray-50 rounded-lg">
-              <TrendingUp className="w-8 h-8 text-gray-900 mx-auto mb-4" />
-              <div className="text-4xl text-gray-900 mb-2">20+</div>
-              <div className="text-gray-600">Projects Shipped</div>
-            </div>
-          </motion.div> */}
-
           {/* Experience Timeline */}
-          <div className="relative">
+          <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="relative"
+          >
             {/* Dotted vertical line on right */}
             <div className="absolute right-0 top-0 bottom-0 w-px border-r-2 border-dotted border-gray-300" />
 
@@ -168,7 +148,7 @@ export function WorkDetail({ onNavigate }: WorkDetailProps) {
               </div>
 
               {/* Section 2: Standalone jobs */}
-              <div className=''>
+              <div>
                 <div className='space-y-8'>
                   {section2.jobs.map((exp, index) => (
                     <div key={index} className="relative">
@@ -208,7 +188,7 @@ export function WorkDetail({ onNavigate }: WorkDetailProps) {
                 </div>
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </div>

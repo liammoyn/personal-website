@@ -39,15 +39,27 @@ export function ProjectsDetail({ onNavigate }: ProjectsDetailProps) {
 
           {/* CS Projects */}
           <div className="mb-20">
-            <h2 className="text-2xl text-gray-900 mb-8 flex items-center gap-2">
-              <Code2 className="w-6 h-6" />
-              CS Personal Projects
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              className="grid md:grid-cols-2 gap-8"
+            >
+              <h2 className="text-2xl text-gray-900 mb-8 flex items-center gap-2">
+                <Code2 className="w-6 h-6" />
+                CS Personal Projects
             </h2>
-            <div className="grid md:grid-cols-2 gap-8">
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="grid md:grid-cols-2 gap-8"
+            >
               {csProjects.map((project, index) => (
                 <ProjectCard project={project} index={index} />
               ))}
-            </div>
+            </motion.div>
           </div>
 
           {/* Other Projects */}
