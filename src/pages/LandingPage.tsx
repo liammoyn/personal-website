@@ -36,19 +36,19 @@ export default function LandingPage({ onNavigate }: { onNavigate: (page: Page) =
       {/* MBA Section - Most Recent */}
       <section id="mba" className="min-h-screen flex items-center justify-center px-6 bg-linear-to-b from-gray-100 to-gray-50 relative">
         <MBASection onNavigate={onNavigate} />
-        <div className="absolute top-8 right-8 text-gray-400 text-sm">2024-2026</div>
+        <div className="absolute top-8 right-8 text-gray-400 text-sm hidden lg:block">2024-2026</div>
       </section>
 
       {/* Amazon Section */}
       <section id="aws" className="min-h-screen flex items-center justify-center px-6 bg-linear-to-b from-white to-gray-50 relative">
         <AmazonSection onNavigate={onNavigate} />
-        <div className="absolute top-8 right-8 text-gray-500 text-sm">2021-2024</div>
+        <div className="absolute top-8 right-8 text-gray-500 text-sm hidden lg:block">2021-2024</div>
       </section>
 
       {/* Projects Section */}
       <section id="proj" className="min-h-screen flex items-center justify-center px-6 bg-linear-to-b from-gray-100 to-gray-50 relative">
         <ProjectsSection onNavigate={onNavigate} />
-        <div className="absolute top-8 right-8 text-gray-500 text-sm">2020-2026</div>
+        <div className="absolute top-8 right-8 text-gray-500 text-sm hidden lg:block">2020-2026</div>
       </section>
 
       {/* Footer CTA */}
@@ -75,7 +75,7 @@ function HeroSection({ imageMargin }: { imageMargin: number }) {
           style={{ '--image-margin': `${imageMargin}px` } as React.CSSProperties}
         />
       </motion.div>
-      <div className="flex flex-row lg:flex-col lg:w-[50vw] justify-center p-12 lg:py-16 font-serif">
+      <div className="flex flex-col lg:w-[50vw] justify-center p-12 lg:py-16 font-serif">
         <div>
           <motion.img
             src="hi.webp"

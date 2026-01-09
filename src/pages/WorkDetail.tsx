@@ -13,7 +13,7 @@ const educationCard = (edu: Education) => {
       className="pl-8 py-4"
     >
       <div className="flex items-start gap-6">
-        <div className="p-4 bg-gray-50 rounded-lg">
+        <div className="p-4 bg-gray-50 rounded-lg hidden lg:block">
           <edu.icon className="w-8 h-8 text-gray-900" />
         </div>
         <div className="flex-1">
