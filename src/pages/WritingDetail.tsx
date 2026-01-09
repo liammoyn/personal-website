@@ -37,7 +37,7 @@ const articleCard = (article: ArticleSummary, index: number, onNavigate: any) =>
   </div>
 );
 
-export function SchoolDetail({ onNavigate }: SchoolDetailProps) {
+export function WritingDetail({ onNavigate }: SchoolDetailProps) {
   return (
     <div className="min-h-screen bg-white">
       <Navigation onNavigate={onNavigate} onPage='writing' />

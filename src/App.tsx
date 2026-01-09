@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { SchoolDetail } from './pages/SchoolDetail';
+import { WritingDetail } from './pages/WritingDetail';
 import { WorkDetail } from './pages/WorkDetail';
 import { ProjectsDetail } from './pages/ProjectsDetail';
 import { Page } from './components/Navigation';
@@ -49,7 +49,7 @@ export default function App() {
   return (
     <div>
       {currentPage === 'home' && <LandingPage onNavigate={handleNavigate} />}
-      {currentPage === 'writing' && <SchoolDetail onNavigate={handleNavigate} />}
+      {currentPage === 'writing' && <WritingDetail onNavigate={handleNavigate} />}
       {currentPage === 'work' && <WorkDetail onNavigate={handleNavigate} />}
       {currentPage === 'projects' && <ProjectsDetail onNavigate={handleNavigate} />}
       {currentPage === 'competitive-strategy' && <CompStratArticle onNavigate={handleNavigate} />}
