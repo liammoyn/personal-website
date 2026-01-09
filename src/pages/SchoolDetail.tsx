@@ -58,8 +58,8 @@ export function SchoolDetail({ onNavigate }: SchoolDetailProps) {
               Academic Writing
             </h1>
             <p className="text-xl text-gray-600 max-w-3xl">
-              I'm often asked about what I've learned through getting my MBA, so I've started a writing series detailing the
-              lessons I've learned from each of my classes and then applying those learnings to the broader technology space.
+              I'm often asked about what I've learned through getting my MBA, so I've started a writing series detailing 
+              my takeaways from each of my classes and applying those lessons to the broader technology space.
             </p>
           </motion.div>
 

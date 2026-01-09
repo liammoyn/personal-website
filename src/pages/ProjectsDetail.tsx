@@ -1,8 +1,8 @@
 import { Navigation, Page } from '../components/Navigation';
 import { motion } from 'motion/react';
-import { ExternalLink, Code2 } from 'lucide-react';
+import { Code2 } from 'lucide-react';
 import ProjectCard from '../components/ProjectCard';
-import { projectData } from '../public/resumeinfo';
+import { projectData } from '../public/projectinfo';
 
 interface ProjectsDetailProps {
   onNavigate: (page: Page) => void;
@@ -32,8 +32,7 @@ export function ProjectsDetail({ onNavigate }: ProjectsDetailProps) {
               Things I've Built
             </h1>
             <p className="text-xl text-gray-600 max-w-3xl">
-              A selection of side projects, experiments, and personal initatives. Each project took learning, passion,
-              and grit to get it to the finish line.
+              A selection of side projects, experiments, and personal initatives. Each project was fueled by curiosity and is a product of life-long learning.
             </p>
           </motion.div>
 

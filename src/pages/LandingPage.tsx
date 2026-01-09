@@ -2,10 +2,10 @@ import { motion, useInView } from 'motion/react';
 import { useRef, useState, useEffect } from 'react';
 import { Navigation } from '../components/Navigation';
 import { ArrowRight, Code2, FileText } from 'lucide-react';
-import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext } from '../components/ui/carousel';
-import { ImageWithFallback } from '../components/figma/ImageWithFallback';
+import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext } from '../components/generated/carousel';
+import { ImageWithFallback } from '../components/generated/ImageWithFallback';
 import { Page } from '../components/Navigation';
-import { projectData } from '../public/resumeinfo';
+import { projectData } from '../public/projectinfo';
 import ProjectCard from '../components/ProjectCard';
 import Footer from '../components/Footer';
 
@@ -193,7 +193,7 @@ function MBASection({ onNavigate }: { onNavigate: (page: Page) => void }) {
 
       <div>
         <p className="text-xl text-gray-600 max-w-2xl mb-8">
-          I joined Booth's MBA program to develop as a holistic product developer. I wanted to develop business acumin that I could blend with my technical ability to solve more complex real-world problems.
+          I joined Booth's MBA program to grow as a holistic product developer. I'm blending my technical ability with business understanding to solve more complex real-world problems.
         </p>
       </div>
 
@@ -201,7 +201,6 @@ function MBASection({ onNavigate }: { onNavigate: (page: Page) => void }) {
         {[
           { label: 'Applied AI, Strategic Management, and Entreprenuership', sublabel: 'Concentrations' },
           { label: 'Chair of Booth AI Group, Student Mentor for Booth Tech Group', sublabel: 'Club Affiliations' },
-          // { icon: Briefcase, label: '', sublabel: 'Entreprenuership' }
         ].map((item, index) => (
           <div
             key={index}
@@ -240,8 +239,7 @@ function AmazonSection({ onNavigate }: { onNavigate: (page: Page) => void }) {
               Amazon
             </h2>
             <p className="text-xl text-gray-600 mb-8">
-              Built scalable systems and led technical initiatives for Amazon services.
-              Worked with distributed systems, cloud infrastructure, and served millions of customers.
+              I designed and scaled distributed systems, leading technical initiatives across multiple Amazon services to deliver reliable, high-performance solutions for millions of customers.
             </p>
           </div>
 
