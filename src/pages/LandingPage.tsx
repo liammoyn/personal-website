@@ -199,15 +199,19 @@ function MBASection({ onNavigate }: { onNavigate: (page: Page) => void }) {
 
       <div className="grid md:grid-cols-2 gap-6 mb-8">
         {[
-          { label: 'Applied AI, Strategic Management, and Entreprenuership', sublabel: 'Concentrations' },
-          { label: 'Chair of Booth AI Group, Student Mentor for Booth Tech Group', sublabel: 'Club Affiliations' },
+          { items: ['Applied AI', 'Strategic Management', 'Entrepreneurship', 'Operations Management'], sublabel: 'Concentrations', layout: 'grid' as const },
+          { items: ['Chair of Booth AI Group', 'Student Mentor for Booth Tech Group'], sublabel: 'Club Affiliations', layout: 'list' as const },
         ].map((item, index) => (
           <div
             key={index}
-            className="bg-white p-6 rounded-lg border border-gray-900 shadow-sm"
+            className="bg-white p-6 rounded-lg border border-gray-900 shadow-sm flex flex-col"
           >
-            <h3 className="text-lg text-gray-900 mb-1">{item.label}</h3>
-            <p className="text-sm text-gray-600">{item.sublabel}</p>
+            <div className={item.layout === 'grid' ? "grid grid-cols-2 gap-y-1 gap-x-2 grow" : "space-y-1 grow"}>
+              {item.items.map((text, i) => (
+                <h3 key={i} className="text-lg text-gray-900">{text}</h3>
+              ))}
+            </div>
+            <p className="text-sm text-gray-600 mt-4">{item.sublabel}</p>
           </div>
         ))}
       </div>
