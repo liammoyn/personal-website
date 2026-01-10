@@ -273,7 +273,7 @@ function AmazonSection({ onNavigate }: { onNavigate: (page: Page) => void }) {
           className="space-y-4"
         >
           {[
-            { title: 'Techincal Product Managment Internship', desc: 'Defined product and technical requirements for Amazon Grocery\'s marketing technology assessment strategy', year: '2025-2025', team: 'Amazon Grocery' },
+            { title: 'Technical Product Management Internship', desc: 'Defined product and technical requirements for Amazon Grocery\'s marketing technology assessment strategy', year: '2025-2025', team: 'Amazon Grocery' },
             { title: 'Software Development Engineer II', desc: 'Led team architecting and building green-field distributed work execution system for CloudWatch Application Signals', year: '2023-2024', team: 'AWS CloudWatch' },
             { title: 'Software Development Engineer I', desc: 'Designed and developed full-stack features for online A/B testing framework service CloudWatch Evidently', year: '2021-2023', team: 'AWS CloudWatch' },
           ].map((role, index) => (
