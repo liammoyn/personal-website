@@ -104,7 +104,7 @@ export const experienceData: Experience[] = [
     {
         title: 'Software Development Co-op',
         company: 'MineralTree',
-        location: 'Cambrdige, MA',
+        location: 'Cambridge, MA',
         period: '2019',
         highlights: [
             'Designed and implemented 3 micro-services to help transition MineralTree, an AP automation software, from a monolithic tech stack to a modern and more performant architecture, reducing operating costs by 30%',
