@@ -14,7 +14,7 @@ const articleCard = (article: ArticleSummary, index: number, onNavigate: any) =>
         ? 'hover:border-gray-900 cursor-pointer transition-colors'
         : 'opacity-60 cursor-default'
     }`}
-    onClick={() => onNavigate(article.page)}
+    onClick={() => article.isFinished && onNavigate(article.page)}
   >
     <div className="flex justify-between items-start mb-3">
       <h3 className="text-xl text-gray-900">{article.courseName}</h3>

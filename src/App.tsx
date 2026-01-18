@@ -5,6 +5,7 @@ import { ProjectsDetail } from './pages/ProjectsDetail';
 import { Page } from './components/Navigation';
 import LandingPage from './pages/LandingPage';
 import CompStratArticle from './pages/articles/CompStratArticle';
+import NPSArticle from './pages/articles/NPSArticle';
 
 function getPageFromPath(path: string): Page {
   const pathMap: Record<string, Page> = {
@@ -53,6 +54,7 @@ export default function App() {
       {currentPage === 'work' && <WorkDetail onNavigate={handleNavigate} />}
       {currentPage === 'projects' && <ProjectsDetail onNavigate={handleNavigate} />}
       {currentPage === 'competitive-strategy' && <CompStratArticle onNavigate={handleNavigate} />}
+      {currentPage === 'new-products-services' && <NPSArticle onNavigate={handleNavigate} />}
     </div>
   );
 }

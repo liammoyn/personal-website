@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { ArrowLeft } from 'lucide-react';
 
-export type Page = 'home' | 'writing' | 'work' | 'projects' | 'competitive-strategy';
+export type Page = 'home' | 'writing' | 'work' | 'projects' | 'competitive-strategy' | 'new-products-services';
 
 interface NavigationProps {
   onNavigate: (page: Page) => void;

@@ -20,10 +20,11 @@ const CompStrat: ArticleSummary = {
 
 const NPS: ArticleSummary = {
     courseName: "New Products and Services",
-    wordCount: "3.1k",
+    wordCount: "2.6k",
     summary: "Hands on user centered design provides a framework to scale innovation for new and existing busineses",
     deepDiveTopic: "Concept Testing AI Products",
-    isFinished: false,
+    isFinished: true,
+    page: 'new-products-services'
 }
 
 const NVS: ArticleSummary = {
