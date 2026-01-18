@@ -8,14 +8,17 @@ import CompStratArticle from './pages/articles/CompStratArticle';
 import NPSArticle from './pages/articles/NPSArticle';
 
 function getPageFromPath(path: string): Page {
+  // Normalize path by removing trailing slash
+  const normalizedPath = path === '/' ? '/' : path.replace(/\/$/, '');
   const pathMap: Record<string, Page> = {
     '/': 'home',
     '/writing': 'writing',
     '/work': 'work',
     '/projects': 'projects',
     '/competitive-strategy': 'competitive-strategy',
+    '/new-products-services': 'new-products-services',
   };
-  return pathMap[path] || 'home';
+  return pathMap[normalizedPath] || 'home';
 }
 
 function getPathFromPage(page: Page): string {
