@@ -38,7 +38,7 @@ export default function Citation({ number, citations }: CitationProps) {
       </a>
       {isVisible && (
         <div
-          className="absolute top-full left-1/2 -translate-x-1/2 mt-2 bg-white border-gray-300 border text-sm px-3 py-2 rounded-lg shadow-lg z-50 whitespace-nowrap"
+          className="absolute top-full left-1/2 -translate-x-1/2 mt-2 bg-white border-gray-300 border text-sm px-3 py-2 rounded-lg shadow-lg z-50 w-[calc(100vw-3rem)] md:w-auto md:whitespace-nowrap"
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
         >
