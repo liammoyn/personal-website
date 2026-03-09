@@ -35,7 +35,7 @@ export default function Footer({ onNavigate }: { onNavigate: (page: Page) => voi
               Get in Touch
             </a>
             <a
-              href="/MoynihanLiamResumeFall25.pdf"
+              href="/MoynihanLiamResumeSpring2026.pdf"
               download
               className="px-8 py-4 border border-white text-white rounded-lg hover:bg-white hover:text-gray-900 transition-colors"
             >
