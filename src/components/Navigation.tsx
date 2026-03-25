@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { ArrowLeft } from 'lucide-react';
 
-export type Page = 'home' | 'writing' | 'work' | 'projects' | 'competitive-strategy' | 'new-products-services';
+export type Page = 'home' | 'writing' | 'work' | 'projects' | 'competitive-strategy' | 'new-products-services' | 'new-venture-strategy';
 
 interface NavigationProps {
   onNavigate: (page: Page) => void;
@@ -11,6 +11,8 @@ interface NavigationProps {
 // Maps pages to their parent page (defaults to 'home' if not specified)
 const parentPageMap: Partial<Record<Page, { label: string; page: Page }>> = {
   'competitive-strategy': { label: 'Back', page: 'writing' },
+  'new-products-services': { label: 'Back', page: 'writing' },
+  'new-venture-strategy': { label: 'Back', page: 'writing' },
   // Future articles can be added here
 };
 

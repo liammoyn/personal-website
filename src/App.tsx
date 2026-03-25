@@ -6,6 +6,7 @@ import { Page } from './components/Navigation';
 import LandingPage from './pages/LandingPage';
 import CompStratArticle from './pages/articles/CompStratArticle';
 import NPSArticle from './pages/articles/NPSArticle';
+import NVSArticle from './pages/articles/NVSArticle';
 
 function getPageFromPath(path: string): Page {
   // Normalize path by removing trailing slash
@@ -58,6 +59,7 @@ export default function App() {
       {currentPage === 'projects' && <ProjectsDetail onNavigate={handleNavigate} />}
       {currentPage === 'competitive-strategy' && <CompStratArticle onNavigate={handleNavigate} />}
       {currentPage === 'new-products-services' && <NPSArticle onNavigate={handleNavigate} />}
+      {currentPage === 'new-venture-strategy' && <NVSArticle onNavigate={handleNavigate} />}
     </div>
   );
 }

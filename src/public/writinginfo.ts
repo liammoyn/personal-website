@@ -29,10 +29,11 @@ const NPS: ArticleSummary = {
 
 const NVS: ArticleSummary = {
     courseName: "New Venture Strategy",
-    wordCount: "2.6k",
+    wordCount: "3.3k",
     summary: "Startups succeed or fail for a variety of reasons but rules and models can be used to understand their prospects and make sense from the randomness",
-    deepDiveTopic: "Competitive Advantage of Major AI Companies",
-    isFinished: false,
+    deepDiveTopic: "Strategic Models of Major AI Companies",
+    isFinished: true,
+    page: 'new-venture-strategy'
 }
 
 const MarStrat: ArticleSummary = {
