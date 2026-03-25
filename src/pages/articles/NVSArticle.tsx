@@ -1,3 +1,4 @@
+import BlockQuote from "../../components/BlockQuote";
 import Citation from "../../components/Citation";
 import Footer from "../../components/Footer";
 import { Navigation, Page } from "../../components/Navigation";
@@ -44,8 +45,7 @@ export default function NVSArticle({ onNavigate }: NPSArticleProps) {
                         <p>Gregory D. Bunch is an adjunct professor of economics at Chicago Booth with years of experience as an entrepreneur and strategist. He founded Masterplan International Corporation, a strategy consulting firm, and co-founded Oration, a Bay Area healthcare software startup. He also worked as a partner at Brandtrust, a brand strategy consultancy. Professor Bunch is one of the most passionate professors I've had at Booth, bringing infectious energy to every one of our early morning classes.</p>
                         <p>New Venture Strategy teaches the 4 steps required for any startup venture. Weeks 1-2 focus on generating startup ideas. Weeks 3-5 tackle judging ideas and evaluating an opportunity's success potential. Weeks 6 and 9 cover how to fund an idea and work with VCs. Finally, throughout the course, students execute their ideas by working in groups to build their own startups, culminating in a final pitch during weeks 7 and 8. This class is indispensable for startup founders, operators, and investors, and I've found myself revisiting its lessons throughout my time at Booth.</p>
                         <h2 id="learned">What I learned</h2>
-                        {/* TODO: Make into quote block */}
-                        <p>"A startup is a temporary organization in search of a business model"</p>
+                        <BlockQuote>"A startup is a temporary organization in search of a business model"</BlockQuote>
                         <p>The class began by introducing several frameworks for understanding how to think about startups and the role of their leadership.</p>
                         <p>Every startup founding consists of 4 explicit or implicit steps. Founders generate and judge ideas before picking a single idea to fund and execute. Each stage requires its own operations and skillsets, presenting unique opportunities to go awry. Throughout all of them, though, a founder needs to respect 3 limits on their scope. They should focus on a single technology or offering, staying focused on the right idea. They should cater to a single market, allowing them to do it right before taking on the world. And they should work within a limited time frame to avoid dragging out a mistaken path.</p>
                         <p>As a startup grows, its goals must evolve and CEOs must juggle competing stakeholders and incentives. Bunch breaks this down into four stages, each with its own central question and primary stakeholders to consider.</p>
@@ -61,7 +61,7 @@ export default function NVSArticle({ onNavigate }: NPSArticleProps) {
                         <p>Perspective-shifting is an exercise in empathy that asks founders to think from the viewpoint of different stakeholders in their business. Most often, this means your intended customer, but it can also include employees, competitors, shareholders, regulators, suppliers, or critics. Successful perspective-shifting requires actually talking to and observing these stakeholders, leading to a deeper understanding of why people behave the way they do and how your business might engage with them. Crucially, this process requires building self-awareness alongside your understanding of others. Bunch advocates using the Enneagram framework to develop better self-awareness so you can account for your own biases when assuming a new perspective (I discovered that I'm a type 1 with a 9 wing).</p>
                         <p>Weeks 3 and 4 transitioned to the next stage of idea refinement and introduced the POP framework for evaluating a startup's chance of success. POP combines three evaluation frameworks to judge a startup's People, Opportunity, and Proof.</p>
                         {/* TODO: Spacing break */}
-                        <p></p>
+                        <div className="h-[0.625em]" />
                         <p>Evaluating how well-suited a startup's people are for a specific deal comes down to another acronym: SKIN, which stands for Scrappiness, Knowledge, Integrity, and Network.</p>
                         <ul>
                             <li><p><span className="font-bold">Scrappiness</span>: Does this person have the drive, grit, and resilience a startup demands? Startups operate in a VUCA world and need people who can push through adversity. Judge this based on stories about overcoming setbacks.</p></li>
@@ -70,7 +70,7 @@ export default function NVSArticle({ onNavigate }: NPSArticleProps) {
                             <li><p><span className="font-bold">Network</span>: Who do they know? Like it or not, having a strong network is a powerful predictor of success. VCs can help with this, but founders need to proactively reach out and expand their own networks.</p></li>
                         </ul>
                         {/* TODO: Spacing break */}
-                        <p></p>
+                        <div className="h-[0.625em]" />
                         <p>Opportunity is the heart of the POP framework. This step evaluates the strategy behind the startup's core idea. It requires answering several universal questions for every startup, as well as specific questions based on the model this startup follows. I'll cover the eight different startup models and their relevant questions later, but for any business idea, you'll always need to answer:</p>
                         <ul>
                             <li><p><span className="font-bold">Who is the customer?</span> Identify the target audience. Demographics matter, but psychographics matter more, understand how your target audiences' behavior.</p></li>
@@ -81,7 +81,7 @@ export default function NVSArticle({ onNavigate }: NPSArticleProps) {
                         </ul>
 
                         {/* TODO: Spacing break */}
-                        <p></p>
+                        <div className="h-[0.625em]" />
                         <p>Proof is the final step in POP, and this is where theory meets reality. For each step of POP, a startup needs to generate evidence supporting their assumptions and claims. Without it, even the most polished pitch deck is worthless. But not all proof carries equal weight. During this step, evaluate each piece of evidence the startup presents using the following criteria:</p>
                         <ul>
                             <li><p><span className="font-bold">Interesting</span>: Make a judgment. Is this source stating the obvious, or does it add real value to their argument?</p></li>
@@ -91,7 +91,7 @@ export default function NVSArticle({ onNavigate }: NPSArticleProps) {
                         </ul>
 
                         {/* TODO: Spacing break */}
-                        <p></p>
+                        <div className="h-[0.625em]" />
                         <p>Now let's backtrack and examine the 8 different strategy models a startup can follow. Sometimes companies fit into multiple categories, but most new ventures should focus on just one as their core. While this list isn't necessarily exhaustive, if you can't fit a startup into one of these buckets, make damn sure they have a good reason, and don't confuse a lack of direction with innovation.</p>
                         <p><span className="font-bold">1. Geography</span></p>
                         <p>Most commercial stores fall into this category. Geography strategies leverage a business's physical location to drive sales. For example, Starbucks has historically tried to saturate areas around their stores to push out competition and create a natural monopoly.</p>
@@ -127,12 +127,13 @@ export default function NVSArticle({ onNavigate }: NPSArticleProps) {
                         <p>Questions to Answer:</p>
                         <ul>
                             <li><p>Does it work?</p></li>
-                            <li><p>Does the market care?</p></li>
-                            {/* TODO: Make sub bullets */}
-                            <li><p>Is there a user base?</p></li>
-                            <li><p>Is it better than what's available?</p></li>
-                            <li><p>Is it economically viable? (switching cost, price to solve, etc.)</p></li>
-                            {/* End sub bullets */}
+                            <li><p>Does the market care?</p>
+                                <ul className="list-[circle] pl-6">
+                                    <li><p>Is there a user base?</p></li>
+                                    <li><p>Is it better than what's available?</p></li>
+                                    <li><p>Is it economically viable? (switching cost, price to solve, etc.)</p></li>
+                                </ul>
+                            </li>
                             <li><p>Can we protect it?</p></li>
                         </ul>
                         <p><span className="font-bold">6. Commodity Producer</span></p>
@@ -158,20 +159,18 @@ export default function NVSArticle({ onNavigate }: NPSArticleProps) {
                         </ul>
                         
                         {/* TODO: Spacing break */}
-                        <p></p>
+                        <div className="h-[0.625em]" />
                         <p>The POP framework and business models are really the heart of New Venture Strategy. For VCs, it provides a framework for weeding through startup ideas, and for founders, it's a model to measure against and identify your own weaknesses. This framework should drive a startup's pitch deck, but when talking to VCs, there are some idiosyncrasies hard to capture in frameworks. The last three weeks of class were spent building intuition around working with VCs through guest speakers and pitching our own group startup ideas to a panel of investors.</p>
                         <p>Sam Gill, president of the Doris Duke Foundation, came during week 7 to talk about impact investing and the faults of the venture capital industry. Joyce J. Shen, a partner at Together Expedition and professor at UC Berkeley, came during week 9 to discuss investing rounds and how to calculate your ROI as a founder. The takeaway from both speakers was to practice caution. It's almost always better to avoid taking VC money if possible because you sacrifice your autonomy while staying at the bottom of the payout ladder.</p>
                         <p>Finally, I want to end with a few short-form takeaways from class. Despite how many frameworks are covered in NVS, Professor Bunch enjoys teaching non-linearly and often drops his idioms throughout a lecture. Startups are complex and messy endeavors, and you'll have to build up your own bank of idioms through experience. But for now, remember:</p>
-                        {/* TODO: Make all into quote blocks */}
-                        <p>Moving first is not an advantage unless you can defend it</p>
-                        <p>Focus on the salient facts and derive your judgments from them</p>
-                        <p>Don't go to court!</p>
-                        <p>Build your data, representations, and patterns and you'll uncover more problems worth solving</p>
-                        <p>Exploration is a cost in search of future profits</p>
-                        <p>Patterns solve puzzles</p>
-                        <p>Customers buy when you put the right person in the right place with the right solution</p>
-                        <p>The world needs more entrepreneurs (committed to human flourishing)!</p>
-                        {/* End quote blocks */}
+                        <BlockQuote>"Moving first is not an advantage unless you can defend it"</BlockQuote>
+                        <BlockQuote>"Focus on the salient facts and derive your judgments from them"</BlockQuote>
+                        <BlockQuote>"Don't go to court!"</BlockQuote>
+                        <BlockQuote>"Build your data, representations, and patterns and you'll uncover more problems worth solving"</BlockQuote>
+                        <BlockQuote>"Exploration is a cost in search of future profits"</BlockQuote>
+                        <BlockQuote>"Patterns solve puzzles"</BlockQuote>
+                        <BlockQuote>"Customers buy when you put the right person in the right place with the right solution"</BlockQuote>
+                        <BlockQuote>"The world needs more entrepreneurs (committed to human flourishing)!"</BlockQuote>
 
                         <h2 id="deep-dive">Deep dive: Strategic Models of Major AI Companies</h2>
                         <h3>OpenAI: New Technology</h3>
@@ -202,7 +201,7 @@ export default function NVSArticle({ onNavigate }: NPSArticleProps) {
                         <p>Hugging Face has followed the monetization playbook of many enterprise software companies: offer a freemium model for individuals alongside paid enterprise plans. Model suppliers can pay for private hosting and enterprise-level compliance tooling, while developers can pay for managed inference and compute. This freemium strategy keeps their growth pipeline intact by attracting individual users while capitalizing on enterprise customers who need advanced features.</p>
 
                         {/* TODO: Spacing break */}
-                        <p></p>
+                        <div className="h-[0.625em]" />
                         <p>Analyzing companies through the lens of strategy models helps you focus on the important questions they need to answer to succeed. OpenAI's rise has been meteoric, but they'll need to find new moats to protect their advantage, and their runway might be shorter than their valuation implies. DeepSeek lowered the cost floor for the entire industry, but to make this profitable, they need to continue scaling their volume while aggressively protecting their low-cost advantages. Hugging Face has positioned itself to benefit from a fragmented AI industry, but their long-term success depends on their ability to serve both sides of their market while monetizing intelligently. I encourage any aspiring founder to take the time to define their own strategy model and answer the questions their business will rely on.</p>
                     </div>
                 </div>
