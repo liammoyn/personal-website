@@ -23,8 +23,8 @@ export default function ProjectCard({project, index}: ProjectCard) {
             <div className="flex flex-wrap gap-2 mb-6">
             {project.tech.map((tech, i) => (
                 <span
-                key={i}
-                className="px-3 py-1 bg-gray-100 text-gray-700 text-sm rounded"
+                    key={i}
+                    className="px-3 py-1 bg-gray-100 text-gray-700 text-sm rounded"
                 >
                 {tech}
                 </span>
@@ -36,9 +36,10 @@ export default function ProjectCard({project, index}: ProjectCard) {
                 const Icon = link.icon;
                 return (
                     <a
-                    key={i}
-                    href={link.href}
-                    className="flex items-center gap-2 text-gray-900 hover:text-gray-600 transition-colors"
+                        key={i}
+                        target="_blank"
+                        href={link.href}
+                        className="flex items-center gap-2 text-gray-900 hover:text-gray-600 transition-colors"
                     >
                     <Icon className="w-4 h-4" />
                     <span>{link.name}</span>

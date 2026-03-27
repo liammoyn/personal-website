@@ -23,7 +23,7 @@ export function ProjectsDetail({ onNavigate }: ProjectsDetailProps) {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="mb-20"
+            className="mb-10"
           >
             <div className="inline-block px-4 py-2 bg-gray-900 text-white text-sm tracking-wider mb-6">
               PROJECTS
@@ -36,8 +36,31 @@ export function ProjectsDetail({ onNavigate }: ProjectsDetailProps) {
             </p>
           </motion.div>
 
+
+          {/* Other Projects */}
+          <div className="mb-10">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              className="grid md:grid-cols-2 gap-8"
+            >
+             <h2 className="text-2xl text-gray-900 mb-8">Personal Projects</h2>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="grid md:grid-cols-2 gap-8"
+            >
+              {personalProjects.map((project, index) => (
+                <ProjectCard project={project} index={index} />
+              ))}
+            </motion.div>
+          </div>
+
           {/* CS Projects */}
-          <div className="mb-20">
+          <div>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -59,16 +82,6 @@ export function ProjectsDetail({ onNavigate }: ProjectsDetailProps) {
                 <ProjectCard project={project} index={index} />
               ))}
             </motion.div>
-          </div>
-
-          {/* Other Projects */}
-          <div>
-            <h2 className="text-2xl text-gray-900 mb-8">More Projects</h2>
-            <div className="grid md:grid-cols-2 gap-6">
-              {personalProjects.map((project, index) => (
-                <ProjectCard project={project} index={index} />
-              ))}
-            </div>
           </div>
         </div>
       </div>

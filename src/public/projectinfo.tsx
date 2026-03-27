@@ -20,6 +20,26 @@ export interface Project {
 
 export const projectData: Project[] = [
   {
+    title: 'All Fair',
+    category: 'AI-first business intelligence platform for SMBs',
+    description: 'Acting as CTO for a startup building software for small businesses to understand their business model, cash positions, and inventory levels with integrated agentic AI to drive value-driven actions.',
+    tech: ['LangChain', 'React', 'Infrastructure', 'Leadership'],
+    links: [
+      {
+        href: 'https://www.all-fair.com/',
+        name: 'All Fair',
+        icon: ExternalLink,
+      },
+      {
+        href: 'https://app.all-fair.com/',
+        name: 'All Fair App',
+        icon: ExternalLink,
+      }
+    ],
+    featured: true,
+    type: 'PERSONAL_PROJECT',
+  },
+  {
     title: 'HexEmpire',
     category: 'AI Enabled Python Game',
     description: 'A custom strategy board game between 4 players with objective-based scalable computer players written in PyGame with custom graphics.',
