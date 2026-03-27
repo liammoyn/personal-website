@@ -1,4 +1,4 @@
-import { Project } from '../public/resumeinfo';
+import { Project } from '../public/projectinfo';
 
 interface ProjectCard {
     project: Project,
